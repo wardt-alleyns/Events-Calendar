@@ -3,521 +3,1088 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Alleyn's Events · Week 10A · Trinity 2026</title>
+<title>Alleyn's Events · Week 11 · Trinity 2026</title>
 <style>
   :root{
-    --cf:#6495ED; --cf-dark:#2F4FB0; --cf-mid:#5680E0; --cf-light:#EAF0FC;
-    --cf-border:#D6E0FA; --estates:#3A5FBF;
-    --amber:#C77A0A; --amber-bg:#FBEFD9;
-    --green:#2E7D4F; --green-bg:#DDF0E4;
-    --red:#C0392B; --red-bg:#FBE3E0;
-    --estates-bg:#E2E9FB;
-    --bg:#f2f3f8; --ink:#1d2433; --muted:#5b667c;
-    --font:'Futura PT','Century Gothic',Futura,sans-serif;
+    --navy:#2B3A8F;
+    --navy-dark:#1a2460;
+    --navy-mid:#3a4fa8;
+    --navy-light:#eef0fa;
+    --bg:#f2f3f8;
+    --amber:#c77d09;
+    --amber-bg:#fdf3e1;
+    --green:#1f7a4d;
+    --green-bg:#e6f4ec;
+    --red:#b3261e;
+    --red-bg:#fbeae9;
+    --ink:#1d2330;
+    --muted:#5b6376;
+    --line:#d7dbeb;
+    --line-soft:#e7e9f4;
+    --font:'Futura PT','Century Gothic',Futura,'Trebuchet MS',sans-serif;
   }
-  *{box-sizing:border-box;margin:0;padding:0}
-  html{scroll-behavior:smooth}
-  body{font-family:var(--font);background:var(--bg);color:var(--ink);line-height:1.45;-webkit-font-smoothing:antialiased}
+  *{box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%;}
+  body{
+    margin:0;
+    font-family:var(--font);
+    background:var(--bg);
+    color:var(--ink);
+    line-height:1.45;
+    font-size:16px;
+  }
 
-  /* ---------- Header ---------- */
-  header{
+  /* ---------- HEADER ---------- */
+  header.site{
+    position:sticky;top:0;z-index:50;
+    background:linear-gradient(135deg,var(--navy-dark) 0%,var(--navy) 70%,var(--navy-mid) 100%);
+    color:#fff;
+    box-shadow:0 2px 12px rgba(20,30,80,.25);
+  }
+  .site-inner{
+    max-width:1080px;margin:0 auto;
+    padding:18px 22px;
+    display:flex;align-items:center;gap:20px;flex-wrap:wrap;
+  }
+  .wordmark{
+    font-size:1.85rem;font-weight:700;
+    text-transform:uppercase;letter-spacing:.18em;
+    white-space:nowrap;line-height:1;
+  }
+  .divider{
+    width:1px;align-self:stretch;min-height:34px;
+    background:rgba(255,255,255,.35);
+  }
+  .meta{display:flex;flex-direction:column;gap:1px;}
+  .meta .wk{font-weight:700;letter-spacing:.04em;font-size:1.02rem;}
+  .meta .rng{font-size:.92rem;color:rgba(255,255,255,.85);}
+  .meta .iu{
+    font-size:.7rem;text-transform:uppercase;letter-spacing:.16em;
+    color:rgba(255,255,255,.6);margin-top:2px;
+  }
+
+  /* ---------- DAY NAV ---------- */
+  nav.days{
     position:sticky;top:0;z-index:40;
-    background:linear-gradient(100deg,var(--cf-dark) 0%,var(--cf-mid) 100%);
-    color:#fff;padding:14px 20px;
-    box-shadow:0 2px 14px rgba(47,79,176,.28);
+    background:#fff;border-bottom:1px solid var(--line);
+    box-shadow:0 1px 6px rgba(20,30,80,.06);
   }
-  .head-inner{display:flex;align-items:center;gap:18px;flex-wrap:wrap;max-width:1180px;margin:0 auto}
-  .wordmark{font-size:26px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;white-space:nowrap}
-  .vdiv{width:1px;align-self:stretch;min-height:30px;background:rgba(255,255,255,.45)}
-  .head-meta{display:flex;flex-direction:column;gap:1px;font-weight:400}
-  .head-week{font-size:14px;font-weight:700;letter-spacing:.04em}
-  .head-range{font-size:12.5px;opacity:.92}
-  .head-internal{font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;opacity:.78;margin-top:2px}
-
-  /* ---------- Day nav ---------- */
-  .daynav{
-    position:sticky;top:64px;z-index:35;background:#fff;
-    border-bottom:1px solid var(--cf-border);
-    box-shadow:0 1px 6px rgba(47,79,176,.06);
-    overflow-x:auto;-webkit-overflow-scrolling:touch;
+  .days-inner{
+    max-width:1080px;margin:0 auto;
+    display:flex;overflow-x:auto;-webkit-overflow-scrolling:touch;
+    scrollbar-width:none;
   }
-  .daynav-inner{display:flex;gap:0;max-width:1180px;margin:0 auto;min-width:max-content}
+  .days-inner::-webkit-scrollbar{display:none;}
   .daytab{
-    flex:1 0 auto;min-width:104px;border:none;background:transparent;cursor:pointer;
-    font-family:var(--font);padding:9px 14px 8px;text-align:center;
-    border-bottom:3px solid transparent;color:var(--muted);transition:all .15s;
+    flex:1 0 auto;min-width:78px;
+    border:none;background:none;cursor:pointer;
+    padding:9px 12px 8px;
+    font-family:var(--font);color:var(--muted);
+    display:flex;flex-direction:column;align-items:center;gap:1px;
+    border-bottom:3px solid transparent;
+    transition:background .12s,color .12s,border-color .12s;
   }
-  .daytab:hover{background:var(--cf-light)}
-  .daytab .dname{font-size:11px;letter-spacing:.1em;text-transform:uppercase;font-weight:700}
-  .daytab .dnum{font-size:20px;font-weight:700;line-height:1.1;color:var(--ink)}
-  .daytab .dcount{font-size:10.5px;color:var(--muted);letter-spacing:.02em}
-  .daytab.active{border-bottom-color:var(--cf-dark);background:var(--cf-light)}
-  .daytab.active .dname,.daytab.active .dnum{color:var(--cf-dark)}
-  .daytab:focus-visible{outline:2px solid var(--cf-dark);outline-offset:-2px}
+  .daytab:hover{background:var(--navy-light);}
+  .daytab .dn{font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;}
+  .daytab .dd{font-size:1.32rem;font-weight:700;line-height:1.05;color:var(--ink);}
+  .daytab .dc{
+    font-size:.66rem;background:var(--line-soft);color:var(--muted);
+    padding:1px 7px;border-radius:9px;margin-top:2px;font-weight:600;
+  }
+  .daytab.active{border-bottom-color:var(--navy);background:var(--navy-light);}
+  .daytab.active .dn{color:var(--navy);}
+  .daytab.active .dd{color:var(--navy-dark);}
+  .daytab.active .dc{background:var(--navy);color:#fff;}
+  .daytab:focus-visible{outline:2px solid var(--navy-mid);outline-offset:-2px;}
 
-  /* ---------- Main ---------- */
-  main{max-width:1180px;margin:0 auto;padding:20px 16px 48px}
-  .day-head{display:flex;align-items:baseline;gap:12px;margin:6px 2px 16px;flex-wrap:wrap}
-  .day-head h2{font-size:21px;font-weight:700;letter-spacing:.01em}
-  .day-head .dh-count{font-size:13px;color:var(--muted)}
-  .day-head .dh-line{flex:1;height:1px;background:var(--cf-border);min-width:24px}
+  /* ---------- LAYOUT ---------- */
+  main{max-width:1080px;margin:0 auto;padding:18px 16px 40px;}
+  .day-head{
+    display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;
+    margin:6px 2px 14px;
+  }
+  .day-head h2{margin:0;font-size:1.3rem;color:var(--navy-dark);letter-spacing:.01em;}
+  .day-head .sub{color:var(--muted);font-size:.9rem;}
 
-  .cards{display:flex;flex-direction:column;gap:11px}
-
-  /* ---------- Card ---------- */
+  /* ---------- CARD ---------- */
   .card{
-    background:#fff;border:1px solid var(--cf-border);border-radius:11px;
-    overflow:hidden;transition:box-shadow .15s,border-color .15s;
+    background:#fff;border:1px solid var(--line);
+    border-radius:11px;margin-bottom:11px;overflow:hidden;
+    box-shadow:0 1px 3px rgba(20,30,80,.05);
   }
-  .card:hover{box-shadow:0 4px 16px rgba(47,79,176,.1);border-color:var(--cf-mid)}
-  .card.open{box-shadow:0 6px 22px rgba(47,79,176,.14);border-color:var(--cf-mid)}
+  .card.open{border-color:var(--navy-mid);box-shadow:0 4px 16px rgba(20,30,80,.12);}
   .card-head{
-    display:flex;align-items:flex-start;gap:13px;padding:13px 15px;cursor:pointer;
-    width:100%;border:none;background:transparent;font-family:var(--font);text-align:left;
+    width:100%;text-align:left;border:none;background:none;cursor:pointer;
+    font-family:var(--font);
+    display:flex;align-items:flex-start;gap:13px;
+    padding:13px 15px;
   }
-  .card-head:focus-visible{outline:2px solid var(--cf-dark);outline-offset:-3px}
+  .card-head:hover{background:#fafbff;}
+  .card-head:focus-visible{outline:2px solid var(--navy-mid);outline-offset:-2px;}
   .timepill{
-    flex-shrink:0;background:var(--cf-dark);color:#fff;border-radius:7px;
-    padding:6px 9px;text-align:center;min-width:74px;
+    flex:0 0 auto;
+    background:var(--navy);color:#fff;
+    font-size:.74rem;font-weight:600;letter-spacing:.02em;
+    padding:5px 9px;border-radius:7px;white-space:nowrap;
+    text-align:center;line-height:1.25;min-width:62px;
   }
-  .timepill .t1{font-size:13px;font-weight:700;letter-spacing:.02em;line-height:1.15}
-  .timepill .t2{font-size:11px;opacity:.82;line-height:1.2}
-  .card-main{flex:1;min-width:0}
-  .card-title{font-size:15.5px;font-weight:700;line-height:1.25;color:var(--ink)}
-  .card-sub{font-size:12.5px;color:var(--muted);margin-top:2px;display:flex;gap:8px;flex-wrap:wrap;align-items:center}
-  .card-sub .mgr{font-weight:700;color:var(--cf-dark)}
-  .card-sub .rm{color:var(--muted)}
-  .badges{display:flex;gap:5px;flex-wrap:wrap;margin-top:7px}
-  .badge{font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:3px 7px;border-radius:5px}
-  .b-cat{background:var(--amber-bg);color:var(--amber)}
-  .b-est{background:var(--estates-bg);color:var(--estates)}
-  .b-av{background:var(--green-bg);color:var(--green)}
-  .b-note{background:var(--red-bg);color:var(--red)}
-  .b-status{background:var(--cf-light);color:var(--cf-dark);border:1px solid var(--cf-border)}
-  .b-status.prov{background:#FFF7E6;color:#9A6700;border-color:#F2E2BC}
-  .chev{flex-shrink:0;color:var(--cf-mid);font-size:13px;margin-top:4px;transition:transform .2s}
-  .card.open .chev{transform:rotate(180deg)}
-
-  /* ---------- Expanded body ---------- */
-  .card-body{display:none;border-top:1px solid var(--cf-border)}
-  .card.open .card-body{display:block}
-  .tabbar{display:flex;gap:2px;padding:9px 12px 0;background:var(--cf-light);flex-wrap:wrap;border-bottom:1px solid var(--cf-border)}
-  .tab{
-    font-family:var(--font);font-size:12px;font-weight:700;letter-spacing:.02em;
-    padding:7px 12px;border:none;background:transparent;cursor:pointer;color:var(--muted);
-    border-radius:7px 7px 0 0;border-bottom:3px solid transparent;margin-bottom:-1px;transition:all .12s;
+  .timepill small{display:block;font-size:.62rem;opacity:.8;font-weight:500;}
+  .ch-main{flex:1 1 auto;min-width:0;}
+  .ch-title{font-weight:700;font-size:1.02rem;color:var(--ink);line-height:1.25;}
+  .ch-sub{
+    font-size:.82rem;color:var(--muted);margin-top:3px;
+    display:flex;flex-wrap:wrap;gap:4px 12px;align-items:center;
   }
-  .tab:hover:not(.disabled){background:#fff;color:var(--cf-dark)}
-  .tab.active{background:#fff;color:var(--cf-dark);border-bottom-color:var(--cf-dark)}
-  .tab.disabled{color:#b9c0cf;cursor:not-allowed;opacity:.6}
-  .tab:focus-visible{outline:2px solid var(--cf-dark);outline-offset:-2px}
-  .tabpanel{display:none;padding:15px 17px 18px}
-  .tabpanel.active{display:block}
+  .ch-sub .mgr::before{content:"";}
+  .ch-type{
+    font-size:.68rem;text-transform:uppercase;letter-spacing:.08em;
+    color:var(--navy-mid);font-weight:600;
+  }
+  .badges{display:flex;flex-wrap:wrap;gap:5px;margin-top:7px;}
+  .badge{
+    font-size:.66rem;font-weight:600;letter-spacing:.04em;
+    text-transform:uppercase;padding:2px 8px;border-radius:20px;
+    border:1px solid transparent;
+  }
+  .b-cat{background:var(--amber-bg);color:var(--amber);border-color:#eccf9d;}
+  .b-est{background:var(--navy-light);color:var(--navy);border-color:#cdd4f1;}
+  .b-av{background:var(--green-bg);color:var(--green);border-color:#bcdcc9;}
+  .b-note{background:var(--red-bg);color:var(--red);border-color:#eec4c1;}
+  .chev{
+    flex:0 0 auto;align-self:center;color:var(--navy-mid);
+    transition:transform .18s;font-size:1rem;
+  }
+  .card.open .chev{transform:rotate(180deg);}
 
-  .kv{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:11px 22px}
-  .kv .kv-item{display:flex;flex-direction:column;gap:1px}
-  .kv .kv-k{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:700}
-  .kv .kv-v{font-size:13.5px;color:var(--ink);font-weight:400}
-  .kv .kv-v.full{grid-column:1/-1}
-  .ov-notes{margin-top:14px;padding-top:13px;border-top:1px dashed var(--cf-border)}
-  .ov-notes .kv-k{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:700;margin-bottom:4px}
-  .ov-notes p{font-size:13.5px;color:var(--ink)}
+  /* ---------- BODY / TABS ---------- */
+  .card-body{display:none;border-top:1px solid var(--line-soft);}
+  .card.open .card-body{display:block;}
+  .tabstrip{
+    display:flex;overflow-x:auto;scrollbar-width:none;
+    background:#fafbff;border-bottom:1px solid var(--line-soft);
+  }
+  .tabstrip::-webkit-scrollbar{display:none;}
+  .tabbtn{
+    flex:0 0 auto;border:none;background:none;cursor:pointer;
+    font-family:var(--font);font-size:.82rem;font-weight:600;
+    color:var(--muted);padding:10px 14px;
+    border-bottom:2px solid transparent;white-space:nowrap;
+    transition:color .12s,border-color .12s,background .12s;
+  }
+  .tabbtn:hover:not(.disabled){color:var(--navy);background:var(--navy-light);}
+  .tabbtn.active{color:var(--navy-dark);border-bottom-color:var(--navy);}
+  .tabbtn.disabled{color:#b6bacb;cursor:not-allowed;opacity:.65;}
+  .tabbtn:focus-visible{outline:2px solid var(--navy-mid);outline-offset:-2px;}
 
-  ul.reqs{list-style:none;display:flex;flex-direction:column;gap:8px}
-  ul.reqs li{position:relative;padding-left:18px;font-size:13.5px;color:var(--ink)}
-  ul.reqs li::before{content:"";position:absolute;left:2px;top:8px;width:6px;height:6px;border-radius:2px;background:var(--cf-mid)}
-  ul.reqs li.sub{padding-left:34px;color:var(--muted);font-size:12.5px}
-  ul.reqs li.sub::before{left:18px;top:8px;width:4px;height:4px;background:var(--cf-border)}
-  .req-empty{font-size:13px;color:var(--muted);font-style:italic}
-  .req-label{font-weight:700;color:var(--estates)}
-  .tab-cat .req-label{color:var(--amber)}
-  .tab-av .req-label{color:var(--green)}
-  .tab-other .req-label{color:var(--red)}
+  .panel{display:none;padding:15px 16px 17px;}
+  .panel.active{display:block;}
 
-  /* ---------- Footer ---------- */
-  footer{background:var(--cf-dark);color:#fff;text-align:center;padding:18px 20px;font-size:12px;letter-spacing:.08em}
-  footer span{opacity:.9}
+  .kv{display:grid;grid-template-columns:max-content 1fr;gap:7px 16px;}
+  .kv dt{font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:600;padding-top:1px;}
+  .kv dd{margin:0;font-size:.92rem;color:var(--ink);}
+  .kv dd .pill{
+    display:inline-block;font-size:.7rem;font-weight:600;
+    padding:1px 8px;border-radius:12px;background:var(--navy-light);
+    color:var(--navy);border:1px solid #cdd4f1;
+  }
+  .kv dd .pill.conf{background:var(--green-bg);color:var(--green);border-color:#bcdcc9;}
+  .ov-notes{margin-top:13px;padding-top:12px;border-top:1px dashed var(--line);}
+  .ov-notes .lbl{font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:600;margin-bottom:5px;}
+  .ov-notes p{margin:0;font-size:.9rem;color:var(--ink);}
 
-  .empty-day{background:#fff;border:1px dashed var(--cf-border);border-radius:11px;padding:34px 20px;text-align:center;color:var(--muted);font-size:14px}
+  ul.req{margin:0;padding:0;list-style:none;}
+  ul.req li{
+    position:relative;padding:5px 0 5px 18px;font-size:.91rem;
+    border-bottom:1px solid var(--line-soft);
+  }
+  ul.req li:last-child{border-bottom:none;}
+  ul.req li::before{
+    content:"";position:absolute;left:2px;top:11px;
+    width:6px;height:6px;border-radius:50%;background:var(--navy-mid);
+  }
+  .panel.p-cat ul.req li::before{background:var(--amber);}
+  .panel.p-av ul.req li::before{background:var(--green);}
+  .panel.p-note ul.req li::before{background:var(--red);}
+  ul.req li b{color:var(--navy-dark);font-weight:700;}
+  .empty{font-size:.88rem;color:#9499ad;font-style:italic;padding:4px 0;}
+
+  /* ---------- FOOTER ---------- */
+  footer.site{
+    background:var(--navy-dark);color:rgba(255,255,255,.82);
+    text-align:center;padding:18px 16px;
+    font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;
+  }
 
   @media (max-width:560px){
-    .wordmark{font-size:20px;letter-spacing:.13em}
-    .vdiv{display:none}
-    .head-inner{gap:10px}
-    .daynav{top:58px}
-    .timepill{min-width:64px}
-    .card-title{font-size:14.5px}
-    .kv{grid-template-columns:1fr}
-    main{padding:14px 11px 40px}
+    .site-inner{padding:14px 16px;gap:13px;}
+    .wordmark{font-size:1.4rem;letter-spacing:.14em;}
+    .meta .wk{font-size:.92rem;}
+    .timepill{min-width:56px;font-size:.7rem;}
+    .ch-title{font-size:.96rem;}
+    main{padding:14px 11px 36px;}
+    .kv{grid-template-columns:1fr;gap:2px 0;}
+    .kv dt{padding-top:8px;}
+    .kv dt:first-child{padding-top:0;}
   }
 </style>
 </head>
 <body>
 
-<header>
-  <div class="head-inner">
+<header class="site">
+  <div class="site-inner">
     <div class="wordmark">Alleyn's Events</div>
-    <div class="vdiv" aria-hidden="true"></div>
-    <div class="head-meta">
-      <span class="head-week">Week 10A · Trinity 2026</span>
-      <span class="head-range">Monday 22 June – Sunday 28 June 2026</span>
-      <span class="head-internal">Internal use only</span>
+    <div class="divider" aria-hidden="true"></div>
+    <div class="meta">
+      <span class="wk">Week 11A · Trinity 2026</span>
+      <span class="rng">29 June – 5 July 2026</span>
+      <span class="iu">Internal use only</span>
     </div>
   </div>
 </header>
 
-<nav class="daynav" aria-label="Day navigation">
-  <div class="daynav-inner" id="daynav"></div>
+<nav class="days" aria-label="Day navigation">
+  <div class="days-inner" id="dayNav"></div>
 </nav>
 
-<main id="main"></main>
+<main>
+  <div class="day-head">
+    <h2 id="dayTitle"></h2>
+    <span class="sub" id="dayCount"></span>
+  </div>
+  <div id="cardList"></div>
+</main>
 
-<footer><span>Alleyn's Events · For Internal Use</span></footer>
+<footer class="site">Alleyn's Events · For Internal Use</footer>
 
 <script>
-/* ===== Week 10A data ===== */
-const DAYS = [
-  {key:"mon", name:"Mon", num:22, label:"Monday 22 June"},
-  {key:"tue", name:"Tue", num:23, label:"Tuesday 23 June"},
-  {key:"wed", name:"Wed", num:24, label:"Wednesday 24 June"},
-  {key:"thu", name:"Thu", num:25, label:"Thursday 25 June"},
-  {key:"fri", name:"Fri", num:26, label:"Friday 26 June"},
-  {key:"sat", name:"Sat", num:27, label:"Saturday 27 June"},
-  {key:"sun", name:"Sun", num:28, label:"Sunday 28 June"},
+/* ============================================================
+   WEEK 11A · TRINITY 2026  ·  Mon 29 Jun – Sun 5 Jul 2026
+   Source: Events Diary Week 11 (generated 25/06/2026)
+   ============================================================ */
+const WEEK = [
+{
+  day:"Monday", dateNum:"29", fullDate:"Monday 29 June 2026",
+  events:[
+    {
+      ref:"2855", title:"Celebration Day Set Up", type:"Senior School",
+      from:"07:00", to:"19:00", numbers:"0", status:"Confirmed", manager:"Hollie Tillsley",
+      rooms:"MCT (Theatre) · Sports Hall Balcony · Sports Hall (Empty Room)",
+      ovNotes:"Day 1 of the Celebration Day build. Event Concept (EC) install day — see departmental schedule for crew timings.",
+      catering:[
+        "Sports Hall balcony — non-perishables for ~30 contractor staff, replenished as required (porters leave x3 tables).",
+        "Cans water <b>x4 cases</b>; Coke / diet Coke cans <b>x2 cases</b>.",
+        "Large whole-fruit bowl; packets of crisps <b>x48</b>.",
+        "Tea & coffee with disposables / stirrers.",
+        "AM refreshments, Sports Hall, 07:00–19:00 (can be dropped earlier in the day if required)."
+      ],
+      estates:[
+        "Sports Hall Balcony — board the fake grass to completely cover (after maintenance have boarded floor).",
+        "<b>x3</b> trestles + <b>x8</b> folding chairs at weights-room end.",
+        "<b>x2</b> large bins with bags + <b>x1</b> recycling (clear) + <b>x1</b> general waste (black).",
+        "Chairs arriving for Sports Hall via Hallmark — store in Sports Hall until set-up Tue 1 July.",
+        "Maintenance: Ryan Shedwick informed kit must be removed before boarding — liaise directly with PE team if required."
+      ],
+      av:[],
+      other:[
+        "<b>EC install schedule</b> — 07:00 EC on site, unload into Sports Hall; 09:00 trucks off site, build starts; 19:00 all EC crew off site.",
+        "<b>IT:</b> remove access control for all pupil uniware cards to Sports Hall building, 7am 29 Jun – 2 Jul (safeguarding).",
+        "<b>IT:</b> all internal doors in Sports Hall building off access control, 7am 30 Jun – 2 Jul.",
+        "<b>Security:</b> EC arriving to unload into Sports Hall — truck unloads from EAB playing-field side.",
+        "<b>Security:</b> Events to share full security list of names; pre-prepare lanyards for all visitors.",
+        "<b>Hallmark delivery:</b> 650 black chairs + 650 black linking chair clips."
+      ]
+    },
+    {
+      ref:"1285", title:"Head's Study Refreshments", type:"Senior School",
+      from:"07:45", to:"08:00", numbers:"1", status:"Confirmed", manager:"Archie Worthington",
+      rooms:"Head's Study (Ad-Hoc)",
+      ovNotes:"",
+      catering:["F&B to top up refreshments as required — AM, self-service, Head's Study."],
+      estates:[], av:[], other:[]
+    },
+    {
+      ref:"2849", title:"JS Summer Concert Performers", type:"Junior School",
+      from:"08:30", to:"09:00", numbers:"40", status:"Confirmed", manager:"Samantha Peacock",
+      rooms:"JS Hall (Theatre, 40)",
+      ovNotes:"",
+      catering:[
+        "Service from JS Hall kitchen hatch.",
+        "Staff Room Essentials Hamper <b>x4</b>; pastry platter <b>x4</b>.",
+        "Breakfast, JS Hall, 08:15–09:00."
+      ],
+      estates:["8am — <b>x40</b> chairs facing the stage at the back of JS Hall. <b>Please clear at 9am.</b>"],
+      av:[], other:[]
+    },
+    {
+      ref:"2830", title:"Senior School Sports Day", type:"Senior School",
+      from:"08:40", to:"17:00", numbers:"50", status:"Confirmed", manager:"Tilly Pink",
+      rooms:"Running Track · Top Field (All Areas)",
+      ovNotes:"Parents on site. All tables, gazebos and chairs to be fully set by 08:40.",
+      catering:[
+        "x1 case still water cans to nurse station by running track (table next to concrete slope entrance).",
+        "Tea & coffee for staff.",
+        "10:30am — full-sized pastries delivered.",
+        "2pm — water / squash & biscuits delivered to staff.",
+        "Student water station with <b>x2</b> dispensers (porters drop off water for topping up).",
+        "At least <b>x100</b> disposable white paper cups for water station; staff table to have disposables too.",
+        "Staff Room Essentials Hamper <b>x5</b>; pastry platter <b>x5</b>. AM refreshments 08:45–16:00."
+      ],
+      estates:[
+        "Full set complete by 08:40 — <b>17 gazebos & 37 chairs</b> total.",
+        "Nurses: 1 gazebo / 1 table / 4 chairs.",
+        "Catering (staff): 1 table next to results gazebo. Catering (students): 1 table & gazebo for drinks station by student tents.",
+        "Results: 1 gazebo / 1 table / 2 chairs / power cable to table — next to equipment shed.",
+        "8 gazebos with a table under each on back straight for shade.",
+        "Finish line: 10 chairs for finishers + 1 gazebo. 2 gazebos inside track (3 chairs each). 3 gazebos on bottom field (3 chairs each).",
+        "4 chairs at long-jump pit; 2 chairs at shot put inside track; 5 large bins + spare bags.",
+        "Porter assistance to buggy water cases to dispensers + help carry F&B in AM."
+      ],
+      av:[
+        "Power cable to table — set up next to equipment shed.",
+        "PA system with microphones + cables to play music from."
+      ],
+      other:[
+        "<b>Events:</b> signage may be required.",
+        "<b>Security:</b> parents on site for sports day."
+      ]
+    },
+    {
+      ref:"407", title:"Estates and Premises", type:"Senior School",
+      from:"10:50", to:"11:30", numbers:"12", status:"Confirmed", manager:"Archie Worthington",
+      rooms:"Robert Laurie Room (Boardroom, 12)",
+      ovNotes:"", catering:[], estates:[], av:[], other:[]
+    },
+    {
+      ref:"2847", title:"JS Quiz Club — General Knowledge Final, Oxford Uni Visit", type:"Junior School",
+      from:"11:00", to:"12:00", numbers:"6", status:"Confirmed", manager:"Samantha Peacock",
+      rooms:"Hillsboro Road Lodge (Office, 6)",
+      ovNotes:"Off-site visit to Oxford University.",
+      catering:[], estates:[], av:[],
+      other:[
+        "<b>Security:</b> 7am — 2 staff + 4 children leave site by coach to Oxford Uni.",
+        "Abbey Travel pick-up 7am; return pick-up 3pm."
+      ]
+    },
+    {
+      ref:"2846", title:"External Schools Visit", type:"Senior School",
+      from:"14:00", to:"15:45", numbers:"25", status:"Confirmed", manager:"Hollie Tillsley",
+      rooms:"Robert Laurie Room (Boardroom, 25)",
+      ovNotes:"",
+      catering:["Self-service. Staff Room Essentials Hamper <b>x3</b>. PM refreshments, RLR, 14:00–15:54."],
+      estates:[], av:[], other:[]
+    },
+    {
+      ref:"2820", title:"JS Infant Celebration", type:"Junior School",
+      from:"14:00", to:"16:00", numbers:"260", status:"Confirmed", manager:"Samantha Peacock",
+      rooms:"JS Playground · JS Hall · JS36 (Deputy Head Office)",
+      ovNotes:"Mix of adults and children (260). Summer Tea. All spaces to be reset once the event has finished.",
+      catering:[
+        "Catering for 260 (mix of adults & children). No sandwiches in Summer Tea.",
+        "Allergen table provided and clearly labelled.",
+        "Elderflower for adults; squash for children. Disposables to be used.",
+        "Service from Blue Playground on split tables — drinks one side, cakes the other.",
+        "Staff Room Essentials Hamper <b>x260</b>. PM refreshments, JS Playground, 14:45–16:00."
+      ],
+      estates:[
+        "1:30pm JS Blue Playground — <b>x5</b> rustic tables along one side for Hospitality Team. Pack away after event.",
+        "1:30pm JS Hall — <b>x150</b> chairs theatre style with central aisle facing stage (leave room for infants at front — see Bekah Davies).",
+        "x1 exam table right-hand side (closest to fire-exit doors); x3 thinner trestle tables on hatch side; x2 transparent display boards at front. Reset hall after.",
+        "1pm JS36 (Erica Olley's office) — furniture to one side so Occasions Selfie Pod can set up. Reset at end."
+      ],
+      av:["Slideshow / PowerPoint provided by Kirit Patel set up in JS Hall before event starts."],
+      other:["<b>Security:</b> Occasions Photo Booths on site until ~4pm with a vehicle parked in the JS Car Park."]
+    },
+    {
+      ref:"2210", title:"Year 11 End of Year Party", type:"Senior School",
+      from:"15:00", to:"20:00", numbers:"200", status:"Confirmed", manager:"Hollie Tillsley",
+      rooms:"Marquee (Lower Sports Fields)",
+      ovNotes:"Year 11 prom in the Marquee, 5:30–8pm. Events to share floor plan.",
+      catering:[
+        "Full service 5:30pm (ready for 5:15pm) – 8:00pm.",
+        "Mocktail drinks reception with Standard BBQ. Check & accommodate all Year 11 allergies.",
+        "Fruit punch; lemonade / diet Coke from bar; tap water (jugs + x10 plastic glasses per table). Bobbly cups to be used.",
+        "BBQ set up near EAB (gas) — food served from tables next to BBQ. PM refreshments, Marquee, 17:39–20:00."
+      ],
+      estates:[
+        "Marquee: 15 round tables each with x10 chairs spread onto grass (FD tables & chairs); white poseur tables around bar; clear dance-floor space (pavilion end).",
+        "x2 rustic trestles for bar (EAB end); x2 white coat rails with hangers under covered EAB entrance (café side); x1 rustic trestle outside EAB café-side entrance for bag drop; 20x picnic blankets for pupils.",
+        "Fields outside marquee: BBQs x2; tables x4 next to BBQ (gazebos may be needed — catering to confirm); ropes in front of BBQs for safety.",
+        "Maintenance: BBQs x2 + gas set by 3pm; DJ arriving 4:30pm — support any power needs near marquee.",
+        "Cleaning: marquee & ground-floor EAB toilets."
+      ],
+      av:["Theatre Ops: PA system set by 5:30pm — centre of marquee, backs to MUGA. Finished at 8pm, can be cleared."],
+      other:[
+        "<b>IT:</b> time out EAB field-side doors 5–8:30pm.",
+        "<b>Security:</b> London taxi-cab photo booth 5–8:30pm — Smiles Better (Paul), parks on grass outside marquee.",
+        "<b>Security:</b> DJ Michael Godsall, VW Passat GL22 VXE, arriving 4:30pm — direct to marquee to unload."
+      ]
+    },
+    {
+      ref:"785", title:"Data Oversight Group Meeting", type:"Senior School",
+      from:"15:30", to:"16:30", numbers:"10", status:"Confirmed", manager:"Archie Worthington",
+      rooms:"Robert Laurie Room (Boardroom, 10)",
+      ovNotes:"", catering:[], estates:[], av:[], other:[]
+    }
+  ]
+},
+{
+  day:"Tuesday", dateNum:"30", fullDate:"Tuesday 30 June 2026",
+  events:[
+    {
+      ref:"2856", title:"Celebration Day Set Up", type:"Senior School",
+      from:"08:00", to:"19:00", numbers:"0", status:"Confirmed", manager:"Hollie Tillsley",
+      rooms:"MCT (Theatre) · Sports Hall (Empty Room)",
+      ovNotes:"Rehearsal Day 1 build continues. EC crew on site 08:00–19:00.",
+      catering:[
+        "Cans water <b>x4 cases</b>; Coke / diet Coke <b>x2 cases</b>; large whole-fruit bowl; crisps <b>x48</b>; tea & coffee with disposables.",
+        "AM refreshments, Sports Hall, 08:00–19:00 (for ~30)."
+      ],
+      estates:[
+        "Set up Sports Hall chairs — Events to confirm when hall is clear (can do during rehearsals if mindful of performers).",
+        "Maintenance: x3 extra CO2 fire extinguishers left in Sports Hall next to main entrance.",
+        "Cleaning: Sports Hall toilets by 7am; check/empty balcony bins."
+      ],
+      av:[],
+      other:[
+        "<b>IT:</b> remove access control for all pupil uniware cards to Sports Hall building (safeguarding); all internal doors off access control from 7am.",
+        "<b>Security:</b> contractors arrive 08:00; full security list shared, pre-prepare lanyards; Events contact on arrival."
+      ]
+    },
+    {
+      ref:"2164", title:"Girls MCC Cricket", type:"Senior School",
+      from:"08:00", to:"15:30", numbers:"35", status:"Confirmed", manager:"Tilly Pink",
+      rooms:"Marquee (Lower Sports Fields)",
+      ovNotes:"Visitors on site; guests use Pavilion toilets.",
+      catering:[
+        "8:30am — pastries, tea & coffee in silver flasks (refreshed throughout), waters & OJ.",
+        "12:15pm — Argentinian grazing station with dessert option set up, self-service ready by 12:30pm for x35.",
+        "Sparkling elderflower during lunch.",
+        "Pastry platter <b>x4</b>; Staff Room Essentials Hamper <b>x4</b>; Argentinian <b>x4</b>. Breakfast, Marquee, 08:30–15:30."
+      ],
+      estates:[
+        "2x rows of trestle tables with x9 seats each side (remove unneeded on the day) — blue fold-out seats.",
+        "1x rustic trestle for the bar in corner of marquee; 4x rustic trestle tables in opposite corner in L-shape.",
+        "Cleaning: marquee cleaned first thing, before 8am."
+      ],
+      av:[],
+      other:[
+        "<b>Events:</b> directional signage lodge → marquee; Argentinian grazing-station food cards; linen for tables + linen napkins to be hired.",
+        "<b>Security:</b> visitors on site for MCC Cricket; guests using Pavilion toilets."
+      ]
+    },
+    {
+      ref:"2851", title:"JS Founders Day Set Up & Rehearsal", type:"Junior School",
+      from:"08:30", to:"09:30", numbers:"1", status:"Confirmed", manager:"Samantha Peacock",
+      rooms:"Christ's Chapel, Dulwich Village (Ad-Hoc)",
+      ovNotes:"Rehearsal at Christ's Chapel.",
+      catering:[],
+      estates:[
+        "Take to Christ's Chapel for 8:30am rehearsal: keyboard with pedal + piano stool (Gillam Room); x2 blue chairs (JS Hall); x8 music stands (Music Studio); x2 electric guitars + amps (location TBC by Harry Houseago).",
+        "<b>10:30am — all equipment brought back down to JS after event finishes.</b>"
+      ],
+      av:[], other:[]
+    },
+    {
+      ref:"2840", title:"JS Infants Sports Morning", type:"Junior School",
+      from:"10:00", to:"12:00", numbers:"80", status:"Confirmed", manager:"Hollie Tillsley",
+      rooms:"'Mini Wembley' Football Pitch No. 2 · Running Track · Top Field",
+      ovNotes:"Liaise directly with PE team for positioning of equipment and AV.",
+      catering:[
+        "Pastry platter <b>x1</b> for PE team (with all other refreshments).",
+        "Lots of water for children.",
+        "Tea, coffee, water & biscuits for 80 adults; service throughout.",
+        "Staff Room Essentials Hamper <b>x10</b>; sparkling water <b>x10</b>; still water <b>x10</b>. AM refreshments 09:30–12:00."
+      ],
+      estates:[
+        "8am — x12 benches (3 under each House gazebo).",
+        "x1 trestle + x2 chairs under First Aid gazebo; x1 trestle + x2 chairs under Markers gazebo; x3 trestles + x2 chairs under Refreshments gazebo. See Sam for set-up plan.",
+        "Maintenance: 8am gazebos on top field — x4 House, x1 First Aid, x1 Markers, x2 Refreshments (see Sam re positioning).",
+        "Cleaning: 8am — clean toilets, replenish soap / rolls / towels; provide black bags."
+      ],
+      av:["8am — x4 speakers; x1 handheld microphone. Liaise directly with PE team for positioning."],
+      other:[]
+    },
+    {
+      ref:"2841", title:"JS Infant Sports Day Picnic with Parents", type:"Junior School",
+      from:"12:00", to:"13:00", numbers:"150", status:"Confirmed", manager:"Samantha Peacock",
+      rooms:"'Mini Wembley' Football Pitch No. 2",
+      ovNotes:"No dietaries.",
+      catering:[
+        "Packed lunches for children — ham x5, cheese x5.",
+        "Packed lunches for staff — ham x16, cheese x16.",
+        "<b>150 organic PIP ice lollies</b> delivered to Mini Wembley at 12:15pm.",
+        "Lunch, Mini Wembley, 12:00–13:00."
+      ],
+      estates:[], av:[], other:[]
+    },
+    {
+      ref:"1499", title:"Project Crucible Working Group", type:"Senior School",
+      from:"12:00", to:"13:00", numbers:"13", status:"Confirmed", manager:"Hollie Tillsley",
+      rooms:"Robert Laurie Room (Boardroom, 13)",
+      ovNotes:"", catering:[], estates:[], av:[], other:[]
+    },
+    {
+      ref:"432", title:"Co-curricular Routine", type:"Senior School",
+      from:"12:20", to:"13:00", numbers:"6", status:"Confirmed", manager:"Archie Worthington",
+      rooms:"EA25 (Meeting, 6)",
+      ovNotes:"", catering:[], estates:[], av:[], other:[]
+    },
+    {
+      ref:"2728", title:"ASG Operational Meeting", type:"Senior School",
+      from:"12:30", to:"14:00", numbers:"8", status:"Confirmed", manager:"Archie Worthington",
+      rooms:"Robert Laurie Room (Boardroom, 8)",
+      ovNotes:"", catering:[], estates:[], av:[], other:[]
+    },
+    {
+      ref:"2842", title:"JS Junior Sports Afternoon", type:"Junior School",
+      from:"13:00", to:"15:30", numbers:"200", status:"Confirmed", manager:"Samantha Peacock",
+      rooms:"'Mini Wembley' Football Pitch No. 2 · Running Track · Top Field",
+      ovNotes:"End-of-day pack-down of all top-field equipment back onto school site.",
+      catering:[
+        "Lots of water for children.",
+        "Tea, coffee, water & biscuits for 150 adults; service throughout.",
+        "Staff Room Essentials Hamper <b>x20</b>; sparkling water <b>x20</b>; still water <b>x20</b>. PM refreshments 12:45–15:30.",
+        "<b>x200 organic PIP ice lollies</b> — deliver to Top Field at 3pm."
+      ],
+      estates:[
+        "3pm/3:30pm — collapse all tables, bring back onto site & store away.",
+        "Bring all chairs back to JS, store in JS Hall storage cupboard; help transport any other equipment back.",
+        "Maintenance: 3:30pm — collapse all gazebos, bring back & store.",
+        "Cleaning: 12:30pm — clean toilets, replenish soap / rolls / towels; provide black bags."
+      ],
+      av:[], other:[]
+    },
+    {
+      ref:"2510", title:"Music Rehearsals for Celebration Day", type:"Senior School",
+      from:"15:00", to:"17:30", numbers:"50", status:"Confirmed", manager:"Archie Worthington",
+      rooms:"Lanchbery Rehearsal Room (Theatre, 50) · Music School (Whole)",
+      ovNotes:"", catering:[], estates:[], av:[], other:[]
+    },
+    {
+      ref:"436", title:"Senior Leadership Team Meeting", type:"Senior School",
+      from:"15:00", to:"16:00", numbers:"20", status:"Confirmed", manager:"System Administrator",
+      rooms:"Robert Laurie Room (Boardroom, 20)",
+      ovNotes:"",
+      catering:[
+        "2x bottles non-alcoholic prosecco + 20 glasses; alcohol-free beers available.",
+        "Staff Room Essentials Hamper <b>x2</b>; sweet platter <b>x2</b>. PM refreshments, RLR, 15:00–16:00."
+      ],
+      estates:[], av:[], other:[]
+    },
+    {
+      ref:"2716", title:"Development Leadership Board", type:"Senior School",
+      from:"16:30", to:"18:30", numbers:"12", status:"Confirmed", manager:"Hollie Tillsley",
+      rooms:"Robert Laurie Room (Boardroom, 10) — room from 17:00",
+      ovNotes:"Meeting starts promptly at 5pm. Staff contact: Frank Keenan.",
+      catering:[
+        "Clear RLR from SLT meeting immediately at 4pm; set RLR for DLB by 4:30pm.",
+        "Soft drinks: orange juice, elderflower cordial mix.",
+        "Staff Room Essentials Hamper <b>x1</b>; selection of wraps <b>x2</b>; cookie platter <b>x1</b>; soft drinks package <b>x1</b>. PM refreshments 16:30–19:00."
+      ],
+      estates:["Cleaning by 4:30pm — RLR, 2nd-floor balcony, visitor toilets on 2nd floor."],
+      av:[],
+      other:[
+        "<b>Events:</b> signage to RLR; menu for food.",
+        "<b>Security:</b> guests attending in RLR; staff contact Frank Keenan; guests signposted to the RLR."
+      ]
+    },
+    {
+      ref:"2474", title:"Sports Awards", type:"Senior School",
+      from:"18:00", to:"21:00", numbers:"270", status:"Confirmed", manager:"Tilly Pink",
+      rooms:"Marquee (Lower Sports Fields) · Great Hall (Main Building)",
+      ovNotes:"Visitors start in Marquee then into Great Hall; off site by 9pm latest.",
+      catering:[
+        "17:15 — collection of wraps, crisps, cookie & fruit for sports staff (x15, self-service, Main Dining Room).",
+        "17:45 — wraps to EAB for student snack (x89, EAB Café).",
+        "Charcuterie boards (meat & cheese separate), crudités; not bresaola — croquettes as agreed with Prakash.",
+        "Grazing platters: cheese & charcuterie x16; crudités & hummus x16. Bresaola x166. Marquee 17:45–18:30.",
+        "Dietaries: vegetarian x7, no shellfish x2, gluten free x1, pescatarian x2."
+      ],
+      estates:[
+        "Marquee set by 5pm latest — all tables & chairs removed; x6 white poseur tables spread out; 1x rustic trestle for bar.",
+        "Great Hall — 2x trestle tables for trophies centrally on ground level; x3 tables for silver salvas on stage far left. Set by 12:00 Tuesday (over 100 salvas take time).",
+        "Seating for 270 using upstairs & downstairs (avoid cramped feel). Staff front-right of hall = 20 seats; pupils on flanks; central seats for parents. Lectern far right of stage.",
+        "Cleaning: ground-floor EAB toilets & atrium topped up, bins emptied before 5:30pm; visitor toilets by Great Hall before 5:30pm."
+      ],
+      av:["Email from Jen sent Monday 8th July with AV requirements."],
+      other:[
+        "<b>Events:</b> signage to marquee & Great Hall; toilet signs — guests use EAB, students use C-block toilets only.",
+        "<b>Security:</b> visitors start in Marquee then Great Hall; off site by 9pm latest.",
+        "<b>First Aid:</b> provision needed until 21:00."
+      ]
+    },
+    {
+      ref:"2377", title:"South London Youth Theatre", type:"Commercial Event",
+      from:"18:30", to:"21:30", numbers:"20", status:"Invoice Sent", manager:"Alexandra Hart",
+      rooms:"D1 · Old Gym · Dining Room Toilets (Pupils)",
+      ovNotes:"Hire run: Tue 21 Apr – Tue 14 Jul 26.",
+      catering:[],
+      estates:[
+        "20 chairs in each drama space (D1 & Old Gym).",
+        "Any tables and/or equipment cleared to the side / packed away."
+      ],
+      av:[],
+      other:["<b>Security:</b> Dining Hall toilets to remain unlocked until 9:40pm."]
+    }
+  ]
+},
+{
+  day:"Wednesday", dateNum:"01", fullDate:"Wednesday 1 July 2026",
+  events:[
+    {
+      ref:"1286", title:"Head's Study Refreshments", type:"Senior School",
+      from:"07:45", to:"08:00", numbers:"1", status:"Confirmed", manager:"Archie Worthington",
+      rooms:"Head's Study (Ad-Hoc)",
+      ovNotes:"",
+      catering:["F&B to top up refreshments as required — AM, self-service, Head's Study."],
+      estates:[], av:[], other:[]
+    },
+    {
+      ref:"2857", title:"Celebration Day Set Up", type:"Senior School",
+      from:"08:00", to:"19:00", numbers:"30", status:"Confirmed", manager:"Hollie Tillsley",
+      rooms:"MCT (Theatre) · Sports Hall (Empty Room)",
+      ovNotes:"Big rehearsal day. EC table reserved (x12, coming in waves — Events to confirm).",
+      catering:[
+        "All non-perishable items from this week refreshed throughout the day.",
+        "Adding tea & coffee for big rehearsal day Wednesday.",
+        "Table reserved for Event Concept x12 (will come in waves) — Events to confirm.",
+        "Staff Room Essentials Hamper <b>x3</b>. AM refreshments, Sports Hall, 08:00–19:00."
+      ],
+      estates:["Cleaning: by 7am — Sports Hall toilets; check/empty balcony bins."],
+      av:[],
+      other:[
+        "<b>IT:</b> all internal doors in Sports Hall building off access control, 6am 2 Jul – 6pm 4 Jul; student access control restricted in Sports Hall.",
+        "<b>Security:</b> contractors arrive 08:00; full security list shared, pre-prepare lanyards; Events contact on arrival."
+      ]
+    },
+    {
+      ref:"2850", title:"JS Summer Concert Performers", type:"Junior School",
+      from:"08:30", to:"09:00", numbers:"30", status:"Confirmed", manager:"Samantha Peacock",
+      rooms:"JS Hall (Theatre, 30)",
+      ovNotes:"",
+      catering:[
+        "Service from JS Hall kitchen hatch.",
+        "Staff Room Essentials Hamper <b>x3</b>; pastry platter <b>x3</b>. AM refreshments, JS Hall, 08:15–09:00."
+      ],
+      estates:["8am — <b>x30</b> chairs facing the front at the back of JS Hall. <b>Please clear at 9am.</b>"],
+      av:[], other:[]
+    },
+    {
+      ref:"679", title:"Monthly Diary Meeting", type:"Senior School",
+      from:"10:50", to:"11:45", numbers:"10", status:"Confirmed", manager:"Archie Worthington",
+      rooms:"Pavilion (Boardroom, 10) — Clevertouch",
+      ovNotes:"", catering:[], estates:[], av:[], other:[]
+    },
+    {
+      ref:"2717", title:"Audit Planning Meeting", type:"Senior School",
+      from:"11:00", to:"12:00", numbers:"4", status:"Confirmed", manager:"Hollie Tillsley",
+      rooms:"Robert Laurie Room (Boardroom, 4)",
+      ovNotes:"",
+      catering:["Staff Room Essentials Hamper <b>x1</b>. PM refreshments, RLR, 15:30–15:59."],
+      estates:[], av:[], other:[]
+    },
+    {
+      ref:"2821", title:"JS Final House Gathering", type:"Junior School",
+      from:"14:30", to:"15:30", numbers:"348", status:"Confirmed", manager:"Samantha Peacock",
+      rooms:"JS37 Reception Office",
+      ovNotes:"Cupcakes in House colours for all children and staff.",
+      catering:[
+        "<b>x87 blue icing</b> — cater for Margot Shattock accordingly; x1 gluten-free for Simon Kent (staff).",
+        "<b>x87 red icing</b> — cater for Coco Ktistakis & Melania Doris accordingly.",
+        "<b>x87 yellow icing</b> — cater for Tara Sarma & Romy Wethered accordingly.",
+        "<b>x87 green icing</b> — cater for Ophelia Whyte accordingly.",
+        "Also cater for Iggy S-K and Zosia S-K (not allowed sweet treats).",
+        "<b>Deliver to Junior School Office at 2:15pm.</b>"
+      ],
+      estates:[], av:[], other:[]
+    },
+    {
+      ref:"305", title:"IT Strategy", type:"Senior School",
+      from:"15:15", to:"16:00", numbers:"12", status:"Confirmed", manager:"System Administrator",
+      rooms:"Robert Laurie Room (Boardroom, 12)",
+      ovNotes:"",
+      catering:["Self-service. Staff Room Essentials Hamper <b>x2</b>. PM refreshments, RLR, 15:00–16:00."],
+      estates:[], av:[], other:[]
+    },
+    {
+      ref:"2282", title:"Project Crucible Steering Group", type:"Senior School",
+      from:"16:00", to:"17:30", numbers:"16", status:"Confirmed", manager:"Tilly Pink",
+      rooms:"Robert Laurie Room (Boardroom, 16)",
+      ovNotes:"",
+      catering:["Self-service. Staff Room Essentials Hamper <b>x2</b>. PM refreshments, RLR, 17:00–18:30."],
+      estates:[], av:[], other:[]
+    },
+    {
+      ref:"2822", title:"JS Year 6 Leavers Dinner & Disco", type:"Junior School",
+      from:"17:30", to:"21:00", numbers:"200", status:"Confirmed", manager:"Samantha Peacock",
+      rooms:"Main Dining Room (Bespoke, 200) · JS Hall",
+      ovNotes:"Welcome drinks 5:30pm; sit-down dinner 6pm prompt. Table plan emailed separately to Events, Arthur & Porters.",
+      catering:[
+        "Welcome drinks from 5:30pm; sit down for dinner 6pm promptly.",
+        "Bar area set where infant servery is; mocktail station + ice-cream station for children.",
+        "Year 6 buffet menu as provided & agreed with Arthur. Final numbers & dietaries TBC.",
+        "Tables set with linen, napkins, cutlery & glasses; still & sparkling water on tables.",
+        "Elizabeth Meggyesi delivering flowers, placing on tables at 4:30pm.",
+        "Still water x200, sparkling water x200, alcohol package x200, soft drinks package x200. Dinner, MDR, 17:00–21:00."
+      ],
+      estates:[
+        "Main Dining Room — tables set per plan emailed separately; easel to display table plan.",
+        "Cleaning: MDR toilets cleaned, soap/rolls/towels replenished before 5pm."
+      ],
+      av:["2:30pm — large screen + laptop set up for slideshow; x1 handheld microphone."],
+      other:[
+        "<b>IT:</b> time out Hillsboro Road pedestrian gate & Rose Building external doors, 5pm–9:15pm.",
+        "<b>Security:</b> DJ Mike Gee & Simeon (Occasions Photo Booths) arrive 6pm, vehicle in JS Car Park.",
+        "<b>Security:</b> leave MDR / Hillsboro Road gate / Rose Building doors unlocked until 9:15pm."
+      ]
+    }
+  ]
+},
+{
+  day:"Thursday", dateNum:"02", fullDate:"Thursday 2 July 2026",
+  events:[
+    {
+      ref:"2858", title:"Celebration Day", type:"Senior School",
+      from:"07:00", to:"18:00", numbers:"650", status:"Confirmed", manager:"Hollie Tillsley",
+      rooms:"Great Hall (Theatre, 650) · Main Dining Room · MCT (Theatre) · Sports Hall",
+      ovNotes:"SHOW DAY. Two ceremonies — Ceremony 1: 9:00–10:30am; Ceremony 2: 11:30–1:00pm. Ceremonies in Sports Hall and MCT.",
+      catering:[
+        "All non-perishables topped up; paper cups, stirrers & lids for tea & coffee. Sports Hall AM 07:00–19:00 (x30).",
+        "Green Room 1 — whole fruit + 1 crate diet Coke; hamper x1. AM 07:00–14:00.",
+        "Staff Dining Room — two waves of parents, tea & coffee reception before each ceremony (8:15–8:45am & 10:45–11:15am). Reusable plastics for water, paper cups for hot drinks. Homemade biscuits. Served 600. AM 08:15–11:15.",
+        "Great Hall — set by 9:30am; elderflower cordial with still & sparkling water; homemade branded biscuits & cake; crockery & glass. Served 40. AM 10:00–10:30.",
+        "Lunch (weights room next to balcony) 1:30pm — 'Booster' adult lunch bags for production team x30 (sandwich, crisps, granola, fruit, water); x2 crates diet Coke (check AM stocks); restock tea & coffee. Clear at 6pm. Lunch 13:30–15:00."
+      ],
+      estates:[
+        "Great Hall cleared — chairs can be stored in classroom 102 from 3pm Wed 1 July; 1x rustic trestle for F&B.",
+        "From 1:15pm Sports Hall — clear instruments back to Music Dept; clear chairs + chair clips, prepare for Hallmark collection Friday 3 July.",
+        "Cleaning: by 8am — MDR & SDR toilets and foyers; EAB all levels, toilets & foyers into theatre; Sports Hall toilets & foyer. Cleaner on duty to sweep & check toilets between ceremonies."
+      ],
+      av:[],
+      other:[
+        "<b>IT:</b> time out EAB doors both ends & Sports Hall front doors, 7am–1:30pm.",
+        "<b>Security:</b> 7am EC arrive (see crew list for lanyards). Direct parents to Sports Hall & MCT.",
+        "<b>Security:</b> coffee for parents in Main Dining Room 8:15–8:45 & 10:45–11:15 — some parents may arrive early.",
+        "<b>Security:</b> 2pm get-out crew arrive to unload from Sports Hall — truck reverses onto site to reprographics to load in."
+      ]
+    },
+    {
+      ref:"2828", title:"JS End of Term Staff Drinks", type:"Junior School",
+      from:"12:00", to:"13:30", numbers:"50", status:"Confirmed", manager:"Samantha Peacock",
+      rooms:"JS22 Staffroom (Ad-Hoc, 50)",
+      ovNotes:"Please clear at end of event.",
+      catering:["Alcohol package x50; soft drinks package x50. PM refreshments, JS22 Staffroom, 11:45–13:30."],
+      estates:[], av:[], other:[]
+    },
+    {
+      ref:"2843", title:"Trinity End of Term Lunch", type:"Senior School",
+      from:"13:30", to:"16:00", numbers:"300", status:"Confirmed", manager:"Tilly Pink",
+      rooms:"Marquee (Lower Sports Fields)",
+      ovNotes:"Floor plan to be shared. Same marquee layout as HODS set-up plus extra on the grass.",
+      catering:[
+        "Pimm's served for welcome drinks; water on tables with plenty for top-ups.",
+        "Bar set & served by F&B — red, white, rosé wine, beers (incl non-alcoholic) & sparkling elderflower.",
+        "F&B assist catering with setting & clearing tables; glasses hired, nice paper napkins.",
+        "Fridge space required in the Café for catering to store food.",
+        "Catering prep plates & cutlery delivered to marquee; staff set cutlery, serve & pack away. BBQ food & plates by catering.",
+        "Alcohol package x300; soft drinks package x300. Lunch, Marquee, 13:30–15:00."
+      ],
+      estates:[
+        "Events: hired trestles with chairs in marquee in rows (use Alleyn's chairs) — HODS layout + extra on grass; 4x rustic tables for bar & welcome drinks just outside marquee.",
+        "Catering: 2x BBQ + gas; 10x trestle tables; 6x gazebos; 4x ropes; 4x pole stands; picnic blankets available.",
+        "Maintenance: extra gazebos to cover grass tables in case of extreme hot weather."
+      ],
+      av:[
+        "Theatre Ops: mic on stand for JTL outside Neil Green office on decking.",
+        "Speakers for music — Tech / Events to discuss internally."
+      ],
+      other:["<b>Events:</b> signage and large menu printed once items confirmed."]
+    },
+    {
+      ref:"2380", title:"Woodcraft Folk Youth Group", type:"Commercial Event",
+      from:"19:00", to:"21:00", numbers:"50", status:"Hire Agreement Sent", manager:"Georgina Sian Smith",
+      rooms:"6th Form Common Room · Dining Room Toilets (Pupils)",
+      ovNotes:"Hire run: Thu 7 May – Thu 9 Jul 26. Group to use Sixth Form Centre only, no other areas. Space left as found on arrival.",
+      catering:[], estates:[], av:[],
+      other:["<b>Security:</b> access to student toilets in Dining Hall (Dining Hall entrance)."]
+    }
+  ]
+},
+{
+  day:"Friday", dateNum:"03", fullDate:"Friday 3 July 2026",
+  events:[
+    {
+      ref:"980", title:"Stagecoach Shows 2026 — Day 1 of 3", type:"Commercial Event",
+      from:"14:30", to:"21:15", numbers:"60", status:"Hire Agreement Sent", manager:"Alexandra Hart",
+      rooms:"MCT (Theatre) · Old Gym · 6th Form IT Room · EA11/12/13 · EAB Atrium · Green Room 1 · MCT Changing Rooms · Robert Laurie Room",
+      ovNotes:"Production: Frozen — 80 student performers, 4-stage production. Schedule: 14:30 arrive · 16:00 students & technicians · 17:00 tech rehearsal · 19:00 performance · 20:30 ends · 21:00 audience off · 21:30 all off site.",
+      catering:["6x tea towels left behind bar / in café for use Fri–Sun."],
+      estates:[
+        "EAB Atrium (from 2pm, all weekend): 4 trestle tables + 4 chairs; 1 row of poseur tables through centre; 3 black bins with bags; rest of atrium & vestibule clear.",
+        "Green Room 1, MCT Changing Rooms (boys & girls) — space to be clear.",
+        "Robert Laurie Room (from 2pm, all weekend) — tables & chairs moved to the side.",
+        "Cleaning by 7:30am: EAB Atrium, MCT auditorium, Changing Rooms, Green Room, EA11/12/13, 6th Form study area, RLR, Old Gym."
+      ],
+      av:[
+        "Equipment: 1 haze machine; projector; 8 radio mics (headset); 4 vocal mics (SM58 wired).",
+        "Theatre Ops: 3 production technicians/day; forestage up (AAA & AA removed).",
+        "Stage deck along back with steps either side & centre — middle deck usual height, side decks lower; slips clear.",
+        "Mics: 8 radio headset + 4 wired on stands (2 either side at different heights); boundary & ambient mics for un-mic'd performers.",
+        "Lighting & sound pre-programmed before hire; Stagecoach videographer filming all shows."
+      ],
+      other:["<b>Security:</b> access/parking — Claire Guy LE24 KVC; Simon (photographer) PL20 CEA; Tim (van) WJ25 DRV; videographer reg TBC."]
+    }
+  ]
+},
+{
+  day:"Saturday", dateNum:"04", fullDate:"Saturday 4 July 2026",
+  events:[
+    {
+      ref:"2703", title:"The St Matthews Project — Awards Ceremony", type:"Commercial Event",
+      from:"10:00", to:"15:00", numbers:"100", status:"Hire Agreement Sent", manager:"Georgina Sian Smith",
+      rooms:"JS Hall",
+      ovNotes:"Managed by ASEL Events Manager.",
+      catering:[],
+      estates:[
+        "Set up by 9:30am — 150 chairs audience style facing projector screen; 6 trestle tables.",
+        "Cleaning by 9:30am: JS Hall, JS reception area, JS toilets off reception (student & adult), kitchen off JS Hall."
+      ],
+      av:["For 10am — 2x handheld radio mics; projector (HDMI, hirer using own device)."],
+      other:["<b>Security:</b> parking for 2 cars in JS car park, managed by ASEL Events Manager."]
+    },
+    {
+      ref:"980", title:"Stagecoach Shows 2026 — Day 2 of 3", type:"Commercial Event",
+      from:"08:00", to:"20:45", numbers:"60", status:"Hire Agreement Sent", manager:"Alexandra Hart",
+      rooms:"MCT (Theatre) · Old Gym · 6th Form IT Room · EA11/12/13 · EAB Atrium · Green Room 1 · MCT Changing Rooms · Robert Laurie Room",
+      ovNotes:"Production: Frozen. Show 1: 80 students · Show 2: 60 · Show 3: 60. Schedule: 8:00 arrive · 8:30 students · 8:45 technicians · 9:30 tech Show 1 · 11:30 Show 1 · 13:30 tech Show 2 · 15:15 Show 2 · 17:15 tech Show 3 · 18:45 Show 3 · 20:45 all offsite.",
+      catering:["6x tea towels left behind bar / in café for use Fri–Sun."],
+      estates:[
+        "Spaces held all day (08:00–20:45): Old Gym, 6th Form IT Room, EA11/12/13, EAB Atrium, Green Room 1, MCT Changing Rooms, RLR.",
+        "Cleaning by 7:30am: EAB Atrium, MCT auditorium, Changing Rooms, Green Room, EA11/12/13, 6th Form study area, RLR, Old Gym."
+      ],
+      av:[
+        "Equipment (08:00–20:30): 1 haze machine; projector; 8 radio mics (headset); 4 vocal mics (SM58 wired).",
+        "Theatre Ops: 3 production technicians/day; forestage up; stage deck along back with steps; mics 8 headset + 4 wired; boundary & ambient mics; projector; haze.",
+        "Lighting & sound pre-programmed; Stagecoach videographer filming."
+      ],
+      other:["<b>Security:</b> access/parking — Claire Guy LE24 KVC; Simon (photographer) PL20 CEA; Tim (van) WJ25 DRV; videographer reg TBC."]
+    }
+  ]
+},
+{
+  day:"Sunday", dateNum:"05", fullDate:"Sunday 5 July 2026",
+  events:[
+    {
+      ref:"2223", title:"ABRSM — Piano Conference", type:"Commercial Event",
+      from:"09:00", to:"17:00", numbers:"120", status:"Invoice Sent", manager:"Georgina Sian Smith",
+      rooms:"Lanchbery Rehearsal Room (conference) · JS Hall (breakout / lunch)",
+      ovNotes:"140 max attendees incl. ABRSM staffing. Schedule: 9am set-up · 9:30 delegates · 10am seminar · 4pm ends · 5pm packed down & off site.",
+      catering:[
+        "JS Hall by 8:30am — 2x urns filled with water on one trestle table; 2x tea towels left.",
+        "ABRSM will order Waitrose delivery to school within hire times. No nuts or sesame on site."
+      ],
+      estates:[
+        "Lanchbery Rehearsal Room set by 8am — room as clear as possible; theatre seating for 112 (approx 8 rows of 14) facing stage.",
+        "JS Hall set by 8am — chairs pushed to edge of room; middle as clear as possible; 5x trestle tables.",
+        "Maintenance: check door batteries for beeping before Sunday, replace any needed.",
+        "Cleaning by 8:30am: JS Hall, JS Kitchenette, reception toilets, LRR, Music School toilets & entrance."
+      ],
+      av:[
+        "1 camera facing piano keys with feed to 2 screens either side of stage (over-the-shoulder, closely focused on keys, not wide).",
+        "Set up by AV, checked by Theatre team on the day."
+      ],
+      other:[
+        "<b>Events:</b> external signage out for 'Music School & JS Hall'; 2x attendees with visual impairment — have Events number for assistance on arrival.",
+        "<b>Security:</b> 140 max attendees; no parking specified (JS car park if needed & for deliveries); Waitrose van to unload then leave.",
+        "Use of piano in LRR — hiring party responsible for any damage / loss during hire."
+      ]
+    },
+    {
+      ref:"980", title:"Stagecoach Shows 2026 — Day 3 of 3", type:"Commercial Event",
+      from:"08:00", to:"21:15", numbers:"60", status:"Hire Agreement Sent", manager:"Alexandra Hart",
+      rooms:"MCT (Theatre) · Old Gym · 6th Form IT Room · EA11/12/13 · EAB Atrium · Green Room 1 · MCT Changing Rooms · Robert Laurie Room",
+      ovNotes:"Production: Frozen. Show 1: 80 students · Show 2: 60 · Show 3: 80. Schedule: 8:00 arrive · 8:30 students · 8:45 technicians · 9:30 tech Show 1 · 11:30 Show 1 · 13:30 tech Show 2 · 15:15 Show 2 · 17:15 tech Show 3 · 18:45 Show 3 · 20:15 finishes · 21:15 all offsite.",
+      catering:["6x tea towels left behind bar / in café for use Fri–Sun."],
+      estates:[
+        "Spaces held all day (08:00–21:15): Old Gym, 6th Form IT Room, EA11/12/13, EAB Atrium, Green Room 1, MCT Changing Rooms, RLR.",
+        "Cleaning by 7:30am: EAB Atrium, MCT auditorium, Changing Rooms, Green Room, EA11/12/13, 6th Form study area, RLR, Old Gym."
+      ],
+      av:[
+        "Equipment (08:00–21:00): 1 haze machine; projector; 8 radio mics (headset); 4 vocal mics (SM58 wired).",
+        "Theatre Ops: 3 production technicians/day; forestage up; stage deck along back with steps; mics 8 headset + 4 wired; boundary & ambient mics; projector; haze.",
+        "Lighting & sound pre-programmed; Stagecoach videographer filming."
+      ],
+      other:["<b>Security:</b> access/parking — Claire Guy LE24 KVC; Simon (photographer) PL20 CEA; Tim (van) WJ25 DRV; videographer reg TBC."]
+    },
+    {
+      ref:"2250", title:"Jigsaw Arts", type:"Commercial Event",
+      from:"09:00", to:"13:00", numbers:"25", status:"Invoice Sent", manager:"Alexandra Hart",
+      rooms:"6th Form Common Room · D1 · C7 · Lower School Atrium (Ground Floor)",
+      ovNotes:"Hire run: Sun 26 Apr – Sun 5 Jul 26 (final session).",
+      catering:[],
+      estates:["C7 — 25 chairs."],
+      av:[], other:[]
+    }
+  ]
+}
 ];
 
-/* Each event: day, time, title, mgr, ref, num, status, type, room,
-   notes (overview free text), catering[], estates[], av[], other[] */
-const EVENTS = [
-/* ---------------- MONDAY 22 ---------------- */
-{day:"mon",time:"07:45–08:00",title:"Head's Study Refreshments",mgr:"Archie Worthington",ref:1283,num:1,status:"Confirmed",type:"Senior School",room:"Head's Study (Main Building) · Ad-Hoc",
- catering:["Usual cookie jar, peppermint tea, earl grey teabags, still & sparkling water, diet cokes","<span class='req-label'>Service:</span> AM Refreshments · Self Service · 07:45–08:00"]},
-
-{day:"mon",time:"08:30–09:00",title:"JS Year 2 to Year 3 Parent Transition Meeting",mgr:"Samantha Peacock",ref:2789,num:80,status:"Confirmed",type:"Junior School",room:"JS03 Computing Room (JS Fortune Building) · Classroom",
- catering:["Service required from JS03 Computing Room","Staff Room Essentials Hamper (pp) ×5","Pastry platter ×5","<span class='req-label'>Service:</span> AM Refreshments · Served · 08:00–10:59"],
- estates:["8am — Move desks to back of the room; set chairs at the front","PLEASE RESET AT 9AM ready for lessons to start"]},
-
-{day:"mon",time:"09:00–17:00",title:"Activities Week | Sports Hall Talks",mgr:"Hollie Tillsley",ref:2826,num:160,status:"Provisional",type:"Senior School",room:"Sports Hall (Sports Hall Building) · Empty Room"},
-
-{day:"mon",time:"09:00–16:00",title:"JS Year 2–Year 6 ABRSM Exams",mgr:"Samantha Peacock",ref:2806,num:4,status:"Confirmed",type:"Junior School",room:"JS37 Reception Office (JS Rose Building) · Office",
- catering:["×1 Tumbler — deliver to Junior School Office at 8.30am","Water (still) ×1","<span class='req-label'>AM Refreshments:</span> Delivered · 08:30–08:45","Packed lunch ×4 children — choices & dietaries TBC","<span class='req-label'>Lunch:</span> Delivered · 11:30–11:45"]},
-
-{day:"mon",time:"09:30–10:00",title:"Demonstration of the Energy Dashboard",mgr:"Archie Worthington",ref:2741,num:6,status:"Confirmed",type:"Senior School",room:"Robert Laurie Room (EAB) · Boardroom"},
-
-{day:"mon",time:"09:30–12:00",title:"JS Infant Celebration Stage Set Up",mgr:"Samantha Peacock",ref:2818,num:1,status:"Confirmed",type:"Junior School",room:"JS Hall (JS Rose Building) · Theatre",
- estates:["Stage to be set at the front of the JS Hall using the white legs, as requested by Bekah Davies","Must remain in place until Tuesday 30 June"]},
-
-{day:"mon",time:"10:50–12:15",title:"CPG",mgr:"Archie Worthington",ref:732,num:9,status:"Confirmed",type:"Senior School",room:"Robert Laurie Room (EAB) · Boardroom"},
-
-{day:"mon",time:"14:00–15:45",title:"Yr12 Prefects & School Captains Meeting",mgr:"Tilly Pink",ref:2817,num:10,status:"Confirmed",type:"Senior School",room:"Robert Laurie Room (EAB) · Boardroom",
- catering:["Hobnob biscuit jar & waters","Staff Room Essentials Hamper (pp) ×10","<span class='req-label'>Service:</span> PM Refreshments · Self Service · 14:00–15:45"]},
-
-{day:"mon",time:"14:30–15:30",title:"JS U11 Cricket Boys vs Finton House School (Home)",mgr:"Samantha Peacock",ref:2799,num:60,status:"Confirmed",type:"Junior School",room:"EAB Café · Ad-Hoc",
- catering:["Fixture snacks — ×60 flapjacks for children","Deliver to EAB Café for collection by a member of the PE Team","Visiting staff & parents collect free beverage and biscuit from EA Bean hatch","<span class='req-label'>Service:</span> PM Refreshments · Delivered · 14:00–15:30"]},
-
-{day:"mon",time:"15:00–16:00",title:"Cuba Day (Day 1 of 2)",mgr:"Archie Worthington",ref:2654,num:40,status:"Confirmed",type:"Senior School",room:"Studio 1 · Theatre · Studio 2 · Break-out (3 trestle tables)",
- catering:["Ice & ×40 plastic tumblers set up before 9:40am","Catering set up lunch in Pavilion before 12.30pm (preferably before 11.45 so as not to disturb the workshop) — set up and leave covered","Cubana, crisps, Cuban salad, Batido de Mango, napkins, plates, cutlery, 40 plastic tumblers","<span class='req-label'>Service:</span> Self Service"],
- av:["<span class='req-label'>(Tue 23):</span> AV technical check of film playback (planet eStream) and microphone for Teams meeting from screen","AV technical check 1.10pm for first speaker","AV technical check 1.55pm for second speaker"],
- other:["<span class='req-label'>IT Support:</span> Mike Rose — VR Studio 3 Co Lab"]},
-
-{day:"mon",time:"15:30–17:00",title:"JS U9 Athletics Girls vs JAGS (Away)",mgr:"Samantha Peacock",ref:2793,num:1,status:"Confirmed",type:"Junior School",room:"Hillsboro Road Lodge · Office",
- other:["<span class='req-label'>Concierge/Security:</span> 3.30pm — staff and children will leave site and walk to JAGS for this fixture"]},
-
-{day:"mon",time:"17:00–17:30",title:"JS Summer Concert Set Up",mgr:"Samantha Peacock",ref:2805,num:1,status:"Confirmed",type:"Junior School",room:"MCT (EAB) · Theatre",
- estates:["5pm — following to be taken to the MCT for the Summer Concert","<span class='req-label'>From outside Tabakova Room (JS33):</span> 1 medium Marshall Bass amp, 1 medium Marshall Guitar amp, 1 medium Vox Guitar amp, 1 guitar rack stand, 3 Roland Micro Cube amps + power supplies, 8 long jack-jack cables, 1 bass guitar, 1 small electric guitar",{sub:true,t:"From Music Studio JS10: 18 music stands, 11 spike holders, percussion (1 pair congas, drum kit), keyboard — Simon Kent to confirm"}]},
-
-{day:"mon",time:"18:00–20:00",title:"EAC Meeting",mgr:"Tilly Pink",ref:2444,num:10,status:"Confirmed",type:"Senior School",room:"Robert Laurie Room (EAB) · Boardroom",
- catering:["Still & sparkling water, elderflower dispenser","Staff Room Essentials Hamper ×1","Cheese, sourdough & charcuterie grazing platter (serves 8) ×1","Sweet platter — fresh cakes & cookies (serves 8) ×1","Red wine ×1 · White wine ×2","<span class='req-label'>Service:</span> PM Refreshments · Self Service · 17:30–20:00","<span class='req-label'>Note:</span> Harriet to update closer to the time (14/04/26)"],
- other:["<span class='req-label'>IT Support:</span> Time out EAB quad side doors 5.45–8.30pm","<span class='req-label'>Events:</span> Signage at the Lodge directing to RLR","<span class='req-label'>Concierge/Security:</span> Staff & EAC members signposted to the RLR"]},
-
-/* ---------------- TUESDAY 23 ---------------- */
-{day:"tue",time:"09:00–10:30",title:"JS Parent Tour",mgr:"Samantha Peacock",ref:2790,num:30,status:"Confirmed",type:"Junior School",room:"JS Hall (JS Rose Building) · Theatre",
- catering:["Service required from JS Hall Kitchen Hatch","Staff Room Essentials Hamper ×3","Pastry platter ×3","<span class='req-label'>Service:</span> AM Refreshments · Served · 10:00–10:30"]},
-
-{day:"tue",time:"09:00–15:00",title:"JS Summer Concert Rehearsals",mgr:"Archie Worthington",ref:733,num:50,status:"Confirmed",type:"Junior School",room:"MCT (EAB) · Theatre",
- estates:["Move to MCT (Simon Kent & Harry Houseago to confirm collection point):","×50 blue chairs (from MCT store cupboard) · ×6 benches · ×1 drum kit · ×1 drum mat"],
- av:["Simon Kent to liaise directly with the Theatre Team and email finer details","×1 handheld microphone · Full stage","SUPPORT REQUIRED THROUGHOUT CONCERT"]},
-
-{day:"tue",time:"12:20–13:00",title:"Co-curricular Routine",mgr:"Archie Worthington",ref:431,num:6,status:"Confirmed",type:"Senior School",room:"EA25 (EAB) · Meeting"},
-
-{day:"tue",time:"14:00–17:00",title:"Investors Site Meeting",mgr:"Hollie Tillsley",ref:2590,num:20,status:"Confirmed",type:"Senior School",room:"Robert Laurie Room (EAB) · Boardroom",
- catering:["Tea & coffee hamper for 7 (staff panel)","Water for 16 (staff panel & interviewers)","Staff Room Essentials Hamper ×1","<span class='req-label'>Service:</span> PM Refreshments · Self Service · 14:00–17:00"],
- estates:["Large boardroom table to remain in place"],
- other:["<span class='req-label'>Concierge/Security:</span> Investors attending in RLR — staff contact Harriet Cadapen; direct to reception","<span class='req-label'>Reception:</span> Investors in RLR — staff contact Harriet Cadapen"]},
-
-{day:"tue",time:"14:00–15:30",title:"JS Alleyn's School Group School Captains Event",mgr:"Samantha Peacock",ref:2791,num:25,status:"Confirmed",type:"Junior School",room:"JS13 Classroom (JS Fortune Building)",
- catering:["Branded biscuits & fruit platters ×25 (as agreed by Arthur 02.06.2026)","Deliver to Classroom JS13 — 6S","Ensure room is cleared of anything left over at the end","<span class='req-label'>Service:</span> PM Refreshments · Delivered · 14:15–15:30"]},
-
-{day:"tue",time:"15:00–17:00",title:"Senior Leadership Team Meeting",mgr:"System Administrator",ref:435,num:0,status:"Confirmed",type:"Senior School",room:"EA23 / EA24 / EA25 (EAB) as one room · Meeting"},
-
-{day:"tue",time:"15:00–16:00",title:"Cuba Day (Day 2 of 2)",mgr:"Archie Worthington",ref:2654,num:40,status:"Confirmed",type:"Senior School",room:"Pavilion · Theatre · Studio 1 · Studio 2",
- catering:["Ice & ×40 plastic tumblers set up before 9:40am","Catering set up lunch in Pavilion before 12.30pm (preferably before 11.45)","Cubana, crisps, Cuban salad, Batido de Mango, napkins, plates, cutlery, 40 plastic tumblers","<span class='req-label'>Lunch:</span> Self Service · 09:40–13:10"],
- estates:["Pavilion: set up 40 chairs facing screen in 4 rows of 10","Three long tables at the back of the room against the wall"],
- av:["Clevertouch in Pavilion (13:30–16:00)","AV technical check of film playback & microphone for Teams meeting from screen","AV checks at 1.10pm (first speaker) and 1.55pm (second speaker)"],
- other:["<span class='req-label'>IT Support:</span> Mike Rose — VR Studio 3 Co Lab"]},
-
-{day:"tue",time:"17:00–17:30",title:"JS Summer Concert Performers Hot Tea",mgr:"Samantha Peacock",ref:2804,num:70,status:"Confirmed",type:"Junior School",room:"Main Dining Room · Bespoke",
- catering:["Hot tea for ×60 performers and ×10 staff (agreed with Arthur 12.06.2026)","Margherita pizza, chips, dessert and a drink ×60 children + ×10 staff","Vegetarian and gluten-free options to be available","<span class='req-label'>Dinner:</span> Self Service · 17:00–17:30","<span class='req-label'>Note:</span> Full performer name list held on the booking sheet (44 named pupils + staff)"]},
-
-{day:"tue",time:"18:00–20:00",title:"Alleyn's On Live: Human Connections",mgr:"Tilly Pink",ref:2819,num:30,status:"Confirmed",type:"Senior School",room:"All Studios",
- catering:["3× main bespoke canapés/lite bites + 2× dessert canapés (as agreed with Tilly 17/06/26)","Drinks: red, white & rosé wine, prosecco, sparkling elderflower, still & sparkling water","Canapés ×5 (pp) ×30 · Alcohol Package ×30 · Soft drinks ×30","<span class='req-label'>Service:</span> PM Refreshments · Served · 18:00–20:00"],
- av:["Details of requirements needed — email sent to Jordan on 8th June"],
- other:["<span class='req-label'>IT Support:</span> EAB & All Studios doors timed out 6pm–8pm","<span class='req-label'>Cleaning:</span> All studios cleaned by 5pm; EAB ground floor toilets topped up & cleaned","<span class='req-label'>Events:</span> Signage; food cards","<span class='req-label'>Concierge/Security:</span> External guests on site 6pm–8pm in All Studios, also using EAB ground floor toilets"]},
-
-{day:"tue",time:"18:00–19:30",title:"JS Summer Concert",mgr:"Archie Worthington",ref:734,num:300,status:"Confirmed",type:"Junior School",room:"EAB Atrium Ground Floor · Standing · MCT · Theatre",
- catering:["Crisps / dry snacks required","Service required from EAB Bar 5pm–6pm — No interval","Alcohol Package (pp) ×150 · Soft Drinks Package (pp) ×150","Water (sparkling) ×150 · Water (still) ×150","<span class='req-label'>Service:</span> PM Refreshments · EAB Bar · Served · 17:00–18:00"],
- av:["Simon Kent to liaise directly with the Theatre Team","Full stage required","Support required throughout the day"],
- other:["<span class='req-label'>Cleaning:</span> Clean MCT all floors, EAB Atrium balconies, stairwells & toilets — complete by 4.30pm (continue if children rehearsing)"]},
-
-{day:"tue",time:"18:30–21:30",title:"South London Youth Theatre",mgr:"Alexandra Hart",ref:2377,num:20,status:"Invoice Sent",type:"Commercial Event",room:"Dining Room Toilets (Pupils) · D1 · Old Gym",
- estates:["20 chairs in each drama space (D1 & Old Gym)","Any tables and/or equipment cleared to the side / packed away","Dining Room toilets to remain unlocked until 9.40pm"],
- other:["<span class='req-label'>Concierge/Security:</span> Dining Hall toilets to remain open until 9.40pm"]},
-
-/* ---------------- WEDNESDAY 24 ---------------- */
-{day:"wed",time:"07:45–08:00",title:"Head's Study Refreshments",mgr:"Archie Worthington",ref:1284,num:1,status:"Confirmed",type:"Senior School",room:"Head's Study (Main Building) · Ad-Hoc",
- catering:["Catering/F&B to top up refreshments as required","<span class='req-label'>Service:</span> AM Refreshments · Self Service · 07:45–08:00"]},
-
-{day:"wed",time:"08:30–09:00",title:"JS Coffee Morning — Introduction to Social Communication",mgr:"Samantha Peacock",ref:2810,num:15,status:"Confirmed",type:"Junior School",room:"JS03 Computing Room (JS Fortune Building) · Classroom",
- catering:["Service required from JS03 Computer Room — Fortune Building","Staff Room Essentials Hamper ×2","Pastry platter ×2","<span class='req-label'>Service:</span> AM Refreshments · Served · 08:15–09:00"]},
-
-{day:"wed",time:"09:00–10:30",title:"JS Celebration Ceremony Rehearsal",mgr:"Archie Worthington",ref:735,num:100,status:"Confirmed",type:"Junior School",room:"St Barnabas Church (Calton Avenue)",
- estates:["8am — dais to be removed (as discussed with Darren/Tim)","All cups/trophies to be taken up to St Barnabas (see Sam)","×2 trestle tables in front of the choir stalls (matching, wider tables)","×4 blue chairs from JS Hall — see Sam for positioning","×1 drum kit, ×1 drum mat from Music Studio; ×1 keyboard from Gillam Room; ×3 music stands","Community Suite set up: ×2 trestle tables for Hospitality Team (see Sam)","Elizabeth Meggyesi delivering ×2 urns of flowers between 9am–10.30am"],
- av:["9am — AV team member to control volume and sound","×3 head mics · ×1 mic at lectern · ×1 wireless handheld mic","As agreed between Tamsin Pyke and Aaron Thompson"]},
-
-{day:"wed",time:"11:00–12:00",title:"OLT",mgr:"Archie Worthington",ref:1303,num:12,status:"Confirmed",type:"Senior School",room:"Robert Laurie Room (EAB) · Boardroom"},
-
-{day:"wed",time:"13:30–15:30",title:"JS Celebration Ceremony",mgr:"Archie Worthington",ref:736,num:350,status:"Confirmed",type:"Junior School",room:"St Barnabas Church · St Barnabas Community Suite",
- catering:["Service required from Community Suite at St Barnabas Church — cater for 15 people","Staff Room Essentials Hamper ×15","Water (sparkling) ×15 · Water (still) ×15","<span class='req-label'>Service:</span> PM Refreshments · Community Suite · Served · 12:45–13:30"],
- estates:["3.30pm — all equipment brought back down to the Junior School; church reset at end of ceremony"],
- av:["1pm — AV team member to control volume and sound","×3 head mics · ×1 mic at lectern · ×1 wireless handheld mic","PA system to be put back correctly at end of event"]},
-
-{day:"wed",time:"15:00–16:00",title:"ASG Strat Meeting",mgr:"Archie Worthington",ref:2727,num:8,status:"Confirmed",type:"Senior School",room:"Robert Laurie Room (EAB) · Theatre"},
-
-{day:"wed",time:"15:30–16:30",title:"JS Celebration Ceremony Tea (Blue Playground)",mgr:"Archie Worthington",ref:744,num:500,status:"Confirmed",type:"Junior School",room:"JS Playground (JS Play Areas) · Ad-Hoc",
- catering:["Cater for 500 people (mix of adults and children)","No sandwiches needed in summer tea","Allergen table to be provided and clearly labelled","Elderflower for adults · Squash for children · Disposables to be used","Service from Blue Playground on split tables — drinks one side, cakes the other","<span class='req-label'>Service:</span> PM Refreshments · Served · 15:00–16:30"],
- estates:["2.45pm — ×6 rustic tables for Hospitality Team (×3 either side of the Blue Playground)","TO BE CLEARED AT END OF EVENT"]},
-
-/* ---------------- THURSDAY 25 ---------------- */
-{day:"thu",time:"07:45–08:30",title:"Senior Leadership Team Diary Meeting",mgr:"System Administrator",ref:461,num:19,status:"Confirmed",type:"Senior School",room:"Robert Laurie Room (EAB) · Boardroom"},
-
-{day:"thu",time:"08:30–09:00",title:"JS 3M Class Assembly",mgr:"Samantha Peacock",ref:2792,num:30,status:"Confirmed",type:"Junior School",room:"JS Hall (JS Rose Building) · Theatre",
- catering:["Service required from JS Hall Kitchen Hatch","Staff Room Essentials Hamper ×3","Pastry platter ×3","<span class='req-label'>Service:</span> AM Refreshments · Served · 08:15–09:00"],
- estates:["8am — ×30 chairs set at the back of the JS Hall","×4 benches (2 either side) set at the front of the JS Hall"]},
-
-{day:"thu",time:"09:00–12:00",title:"JS Year 2–Year 6 ABRSM Exams",mgr:"Samantha Peacock",ref:2807,num:2,status:"Confirmed",type:"Junior School",room:"JS37 Reception Office (JS Rose Building) · Office",
- catering:["×1 Tumbler — deliver to Junior School Office at 8.30am","Water (still) ×1","<span class='req-label'>AM Refreshments:</span> Delivered · 08:30–08:45","Packed lunch ×2 children — choices & dietaries TBC","<span class='req-label'>Lunch:</span> Delivered · 11:30–11:45"]},
-
-{day:"thu",time:"09:30–10:30",title:"Confidential HR Meeting",mgr:"Archie Worthington",ref:2773,num:11,status:"Confirmed",type:"Senior School",room:"Robert Laurie Room (EAB) · Theatre"},
-
-{day:"thu",time:"10:00–12:00",title:"JS Infants Sports Morning",mgr:"Samantha Peacock",ref:2811,num:80,status:"Confirmed",type:"Junior School",room:"'Mini Wembley' Pitch No.2 · Running Track · Top Field (All Areas)",
- catering:["For PE Team (taken up with all other refreshments) — Breakfast ×6 · 08:00","Lots of water for children","Tea, coffee, water & biscuits for 80 adults — service throughout","Staff Room Essentials Hamper ×10 · Water (sparkling) ×10 · Water (still) ×10","<span class='req-label'>Service:</span> AM Refreshments · Served · 09:30–12:00"],
- estates:["8am — ×12 benches (3 under each House Gazebo)","×1 trestle table + ×2 chairs under First Aid Gazebo","×1 trestle table + ×2 chairs under Markers Gazebo","×3 trestle tables + ×2 chairs under Refreshments Gazebo","PLEASE SEE SAM FOR SET UP PLAN",{sub:true,t:"Maintenance: 8am gazebos on top field (see Sam re positioning) — ×4 House, ×1 First Aid, ×1 Markers, ×2 Refreshments"},{sub:true,t:"Cleaning: 8am clean toilets, replenish soap/rolls/towels; provide black bags"}],
- av:["8am — ×4 speakers, ×1 handheld microphone","LIAISE DIRECTLY WITH PE TEAM for positioning"]},
-
-{day:"thu",time:"12:00–13:00",title:"JS Infant Sports Day Picnic with Parents",mgr:"Samantha Peacock",ref:2812,num:150,status:"Confirmed",type:"Junior School",room:"'Mini Wembley' Football Pitch No.2",
- catering:["Packed lunches for children — Ham ×5, Cheese ×5","Packed lunches for staff — Ham ×16, Cheese ×16 (no dietaries)","150 organic PIP ice lollies delivered to Top Field 'Mini Wembley' at 12.15pm","<span class='req-label'>Lunch:</span> Delivered · 12:00–13:00"]},
-
-{day:"thu",time:"13:00–14:00",title:"MADE Committee",mgr:"Archie Worthington",ref:2733,num:11,status:"Confirmed",type:"Senior School",room:"Robert Laurie Room (EAB) · Boardroom"},
-
-{day:"thu",time:"13:00–15:30",title:"JS Junior Sports Afternoon",mgr:"Samantha Peacock",ref:2813,num:200,status:"Confirmed",type:"Junior School",room:"'Mini Wembley' Pitch No.2 · Running Track · Top Field (All Areas)",
- catering:["Lots of water for children","Tea, coffee, water & biscuits for 150 adults — service throughout","Staff Room Essentials Hamper ×20 · Water (sparkling) ×20 · Water (still) ×20","<span class='req-label'>PM Refreshments:</span> Served · 12:45–15:30","×200 organic PIP ice lollies — deliver to Top Field at 3pm (Delivered)"],
- estates:["3pm/3.30pm — collapse all tables, bring back onto school site and store away","Bring all chairs back to JS, store in JS Hall storage cupboard","Liaise with staff to transport any other equipment back",{sub:true,t:"Maintenance: 3.30pm collapse all gazebos and store away"},{sub:true,t:"Cleaning: 12.30pm clean toilets, replenish; provide black bags"}]},
-
-{day:"thu",time:"13:30–15:00",title:"Confidential HR Meeting",mgr:"Archie Worthington",ref:2777,num:8,status:"Confirmed",type:"Senior School",room:"Pavilion · Theatre",
- av:["Clevertouch ×1"]},
-
-{day:"thu",time:"19:00–20:00",title:"Community Choir Rehearsals",mgr:"Tilly Pink",ref:2435,num:40,status:"Confirmed",type:"Senior School",room:"Lanchbery Rehearsal Room (Music School) · Empty Room",
- catering:["Staff Room Essentials Hamper (pp) ×40","<span class='req-label'>Service:</span> PM Refreshments · Self Service · 18:45–19:15"]},
-
-{day:"thu",time:"19:00–21:00",title:"Woodcraft Folk Youth Group",mgr:"Georgina Sian Smith",ref:2380,num:50,status:"Hire Agreement Sent",type:"Commercial Event",room:"6th Form Common Room · Dining Room Toilets (Pupils)",
- other:["<span class='req-label'>Concierge/Security:</span> Access to student toilets in Dining Hall (Dining Hall entrance)","<span class='req-label'>Event details:</span> Group to use Sixth Form Centre only — not to enter any other areas. Space to be left as found on arrival"]},
-
-/* ---------------- FRIDAY 26 ---------------- */
-{day:"fri",time:"00:00–16:00",title:"Year 13 Graduation @ St Barnabas — Set Up",mgr:"Hollie Tillsley",ref:2802,num:550,status:"Provisional",type:"Senior School",room:"St Barnabas Church (Calton Avenue) · Theatre",
- estates:["Fill up church pews, chapel and community suite to make up to 550 attendees, with an aisle in the middle of the community suite","Keep dais in centre of the hall; move large wooden table to backstage of church/foyer behind church stalls","×3 large trestle tables in front of choir stalls","Fake cornflowers and table cloth (×3) from Events","Order of service from US administrator","Clear and reset from 12pm on Sat 29 June, then message Gemma Rose once site is clear","Remove rubbish; close all doors; turn off all lights"]},
-
-{day:"fri",time:"08:00–08:30",title:"School Captain's Breakfast",mgr:"Tilly Pink",ref:2825,num:4,status:"Confirmed",type:"Senior School",room:"Head's Study (Main Building) · Ad-Hoc",
- catering:["Greek yoghurt, banana, cinnamon pot ×1","Apple & berry muesli pot (cold) ×2","Coconut & muesli pot (cold) ×1","<span class='req-label'>Breakfast:</span> Self Service · 07:30–08:59","<span class='req-label'>F&B:</span> Drop breakfast items off & collect when finished"]},
-
-{day:"fri",time:"08:30–09:30",title:"Overseas Coffee Morning",mgr:"Hollie Tillsley",ref:2336,num:40,status:"Confirmed",type:"Senior School",room:"Robert Laurie Room (EAB) · Theatre",
- catering:["Ready by 7.45am — include still/sparkling water and orange juice","Seasonal fruit platter (cold) ×2 · Pastry platter ×3 · Belgian waffle platter ×2","Soft Drinks Package (pp) ×40","<span class='req-label'>Breakfast:</span> Served · 07:45–09:00"],
- estates:["Set up on 25.06 from 4pm","×1 white poseur table to the right of the door to RLR (inside room)","×40 chairs set up theatre style","×3 white poseur tables for standing area","All other furniture cleared to behind the curtain"],
- av:["AV support in RLR for David Harley to connect device to screen"],
- other:["<span class='req-label'>IT Support:</span> EAB field side doors timed out 7.45am–8.15am","<span class='req-label'>Events:</span> Signs to RLR 'Overseas Coffee Morning'; badges as Andrew's spreadsheet (set up in RLR)","<span class='req-label'>Concierge/Security:</span> Parents visiting 8–9am — Andrew Robertson contact on arrival; guests signposted to RLR"]},
-
-{day:"fri",time:"09:00–13:00",title:"Catering Consultants Meeting",mgr:"Archie Worthington",ref:739,num:20,status:"Confirmed",type:"Senior School",room:"Pavilion · Empty Room",
- av:["Clevertouch ×1"]},
-
-{day:"fri",time:"09:00–14:00",title:"Higher Education Day",mgr:"Hollie Tillsley",ref:2808,num:35,status:"Confirmed",type:"Senior School",room:"Townley Rd Lodge · Staff Dining Room · Studio 1 & 2 · Lower School Atrium · LS01/02/03/05",
- catering:["Set up at 9.15am, ready for service at 10.15am","Staff Room Essentials Hamper ×4","<span class='req-label'>AM Refreshments:</span> Studio 1 · Served · 09:15–10:15","Reserved table for approx ×40 (Alex Bolton to confirm)","<span class='req-label'>Lunch:</span> Staff Dining Room · Self Service · 13:00–14:00"],
- estates:["×1 rustic trestle @ lodge for registration","Studio 1: ×1 rustic table for F&B","Lower School Atrium ground floor: ×10 double tables around perimeter (3 chairs facing 1 chair each); ×10 internal sign holders","LS01/02/03/05: all furniture cleared to sides; tables set in middle (2 facing 1) — Alex Bolton to confirm number of stations (Clevertouch in each)"],
- av:["AV support in immersion studio to set up PPT (Frank Keenan) from 9.30am — session starts 10.30am","AV support to set up screens with welcome slides in LS atrium — Alex Bolton to advise"],
- other:["<span class='req-label'>Events:</span> Signage to LAMDA studio for welcome coffee; signage to LS for those who skip coffee"]},
-
-{day:"fri",time:"09:00–16:00",title:"JS Year 2–Year 6 ABRSM Exams",mgr:"Samantha Peacock",ref:2809,num:4,status:"Confirmed",type:"Junior School",room:"JS37 Reception Office (JS Rose Building) · Office",
- catering:["×1 Tumbler — deliver to Junior School Office at 8.30am","Water (sparkling) ×1","<span class='req-label'>AM Refreshments:</span> Delivered · 08:30–08:45","Packed lunch ×4 children — choices & dietaries TBC","<span class='req-label'>Lunch:</span> Delivered · 11:30"]},
-
-{day:"fri",time:"09:30–11:00",title:"NED's Kitchen",mgr:"Hollie Tillsley",ref:2796,num:6,status:"Confirmed",type:"Senior School",room:"EA23 / EA24 (EAB) as one room · Meeting",
- catering:["Staff Room Essentials Hamper ×1","And tea and coffee","<span class='req-label'>Service:</span> AM Refreshments · EA23 · Self Service · 09:30–11:00"]},
-
-{day:"fri",time:"12:00–17:00",title:"Founders Day incl. Alleyn's Fringe Festival (Day 1 of 2)",mgr:"Hollie Tillsley",ref:741,num:1000,status:"Confirmed",type:"Senior School",room:"Townley Road Lodge · Office (set-up day)",
- estates:["<span class='req-label'>Hallmark delivery Fri 26 June by midday:</span> ×1 6ft glass door fridge (collected Mon 29) · ×65 standard wooden 6ft trestle tables (collected Fri 3) · ×15 5'6\" round tables (collected Tue 30) · ×600 champagne glass Savoie (collected Mon 29, for Graduation)","External sign holders: ×1 EAB quad side, ×1 EAB field side, ×1 outside marquee pavilion side, ×1 barrier net to astro, ×1 next to portacabin","Internal sign holders: ×6 EAB ground floor atrium, ×2 MDR","Events to share full set-up plan & requirements for stalls & activities"],
- av:["Stage decking set up on lower quad for Battle of the Bands","Spoken word in D1 · Dance Showcase in MCT"]},
-
-{day:"fri",time:"13:00–14:00",title:"Summer Works Prep",mgr:"Hollie Tillsley",ref:2648,num:1130,status:"Confirmed",type:"Senior School",room:"Robert Laurie Room (EAB) · Boardroom"},
-
-{day:"fri",time:"14:00–16:30",title:"JS U11 Cricket Mixed vs Colfes School (Away)",mgr:"Samantha Peacock",ref:2815,num:1,status:"Confirmed",type:"Junior School",room:"Townley Road Lodge · Office",
- other:["<span class='req-label'>Concierge/Security:</span> Away fixture — staff and children leaving site by coach","Abbey Travel Coaches pick up 1.20pm; return pick up 4.30pm"]},
-
-{day:"fri",time:"17:00–19:30",title:"JS Staff Leavers Drinks",mgr:"Samantha Peacock",ref:2794,num:60,status:"Confirmed",type:"Junior School",room:"JS Hall (JS Rose Building)",
- catering:["Korean Grazing Station ×60","Alcohol Package (pp) ×60 · Soft Drinks Package (pp) ×60","Water (sparkling) ×60 · Water (still) ×60","<span class='req-label'>Service:</span> PM Refreshments · Self Service · 16:30–19:30"],
- estates:["×1 table for Grazing Station","×2 rustic trestle tables at the side of the JS Hall for refreshments etc."]},
-
-/* ---------------- SATURDAY 27 ---------------- */
-{day:"sat",time:"08:00–11:00",title:"Year 13 Leavers' Photo",mgr:"Hollie Tillsley",ref:2800,num:250,status:"Provisional",type:"Senior School",room:"Townley Road Lodge · Office",
- estates:["×1 rustic trestle at lodge with cornflowers"],
- other:["<span class='req-label'>Schedule:</span> 8am Gillman & Soame set up on Crescent · 9.30–10.00 photo with pupils (no parents) · 10.00 dismissed, pupils head to St Barnabas · 11am pack down complete","<span class='req-label'>Concierge/Security:</span> 7am Gillman & Soame arrival via Townley Rd Lodge; vehicles park next to DT to unload; no vehicles on Crescent until after 10am"]},
-
-{day:"sat",time:"08:30–12:30",title:"Year 13 Graduation @ St Barnabas + Parents' & Leavers' Celebration",mgr:"Hollie Tillsley",ref:2801,num:550,status:"Confirmed",type:"Senior School",room:"St Barnabas Church · Memorial Garden",
- catering:["Staff ready to serve 11.45am–1.30pm for ×550","PUPILS ARE NOT ALLOWED TO BE SERVED ALCOHOL","Prosecco, elderflower mix and water — all served in champagne flutes","Pre-pour for 11.45am arrival, tray service; circulate drinks for top ups throughout","Hired champagne flutes arrive 26 June — deliver to catering bay","Wet weather plan: reception moves to church foyer (Gemma to confirm)","<span class='req-label'>Lunch:</span> Memorial Garden · Served · 10:00–12:30"],
- estates:["By 10am: ×4 rustic trestles for catering; benches in memorial garden moved nearby to allow seating","Maintenance to pitch ×2 Coleman tents over rustic trestles","Catering equipment/drinks — collect from kitchen approx 9am","×2 external sign holders · ×2 trestle tables for hoodies collection","Porters to collect hoodies and year books from Diane Chaplin's office (TBC) and take to memorial garden","Unlock memorial garden by 8am · Clear approx 1.30pm"],
- av:["St Barnabas 9.45am–11.45am","Mic at lectern for PPTs","Check speakers in community suite working","Tech support at start of event (10.15am)"],
- other:["<span class='req-label'>Events:</span> Flowers delivered straight to St B by 9am on Saturday 29; check set up in memorial garden","<span class='req-label'>Concierge/Security:</span> PPT in church for parents & students at 10am, reception in memorial garden 11.45am–1.30pm"]},
-
-{day:"sat",time:"12:00–17:00",title:"Founders Day incl. Alleyn's Fringe Festival (Day 2 of 2)",mgr:"Hollie Tillsley",ref:741,num:1000,status:"Confirmed",type:"Senior School",room:"Marquee · Triple Courts · Great Hall · Pavilion · MDR · EAB Atrium · MCT · C22 · Swimming Pool · Music School",
- catering:["Bacon & sausage butties for ×40 ops staff; tea/coffee available (AM · 08:00–08:30)","Tea, coffee & water for ×40 staff, refreshed throughout the day (Staff Room Essentials Hamper ×4)","Self-serve hot lunch from servery ×50 (Lunch · 11:30–13:00)","First aid: EAB foyer quad side for 12pm — ×2 cases of canned water for medical emergencies","Tea, coffee, water & squash for CCF Pass Out Parade guests ×100 — drinks in front of windows, food on tables in centre (Served · 15:00–16:00)"],
- estates:["Buildings unlocked by 7am: EAB (art ex/theatre/café), C block (C22 art exhibition), Music dept, Science block (abseiling), Main building, marquee (Pimm's tent), swimming pool (water polo), dining rooms, sports hall (wet weather)","Temporary toilets · Guards at lodge all day for security, deliveries & vehicle access (manage Quad unloading, direct to JS parking)","First aiders based in EAB foyer throughout"],
- av:["All day 12pm–5pm — APA Raffle/Comperes (EAB Balcony quad side): PA system, happy music soundtrack to mix in/out; raffle draw at 4pm","Dog Show — behind astro near benches 1.30–2.30pm, PA from 1pm","CCF Pass Out Parade — Triple Courts 2–2.45pm (set up by 1.30pm); speaker & mic, Aaron Thompson to lead"],
- other:["<span class='req-label'>Fringe schedule:</span> Art Show (EAB) · 12.45–1.30 Dance Showcase (MCT) · 1.30–3.30 Battle of the Bands (Lower Quad) · 3.30–4.15 Drama Showcase (D1)","<span class='req-label'>Activities:</span> JS/SS cricket, dog show 12.30–1.30, netball 1st XI vs Alumni, water polo, exhibition board unveiling 1.30, tennis tournament, CCF Pass Out 2–2.45, APA Games, Year 3 French performance, raffle draw 4pm","<span class='req-label'>IT Support:</span> Time out EAB doors both sides 7am–6pm; C block from 12pm; Science block both sides from 10am (abseiling); swimming pool 1.30–3.30pm. IT onsite 12pm–5.30pm, fully test network incl. up to bungalow for fairground rides; Mike Rose managing VR experience in immersion room 12–5pm","<span class='req-label'>Cleaning:</span> Pavilion & toilets, EAB all levels & toilets, craft block (art ex), main building entrance/reception/foyer, E & main building toilets, marquee floor swept, swimming pool building & toilets, dining hall toilets. ×2 cleaners on duty 11am–5pm"]},
-
-{day:"sat",time:"12:00–16:00",title:"JS Founders Day Set Up",mgr:"Samantha Peacock",ref:2814,num:1,status:"Confirmed",type:"Junior School",room:"JS Playground (JS Play Areas) · Ad-Hoc",
- estates:["8am — ×15 gazebos, ×10 exam tables, ×16 trestle tables, ×17 chairs","Set as per AJSA Stalls Plan (shared separately with Events & Premises)","AJSA contacts: Jenna Sung, Pia Furtado, Emily Round"]},
-
-/* ---------------- SUNDAY 28 ---------------- */
-{day:"sun",time:"09:00–13:00",title:"Jigsaw Arts",mgr:"Alexandra Hart",ref:2250,num:25,status:"Invoice Sent",type:"Commercial Event",room:"D1 · Old Gym · C7 · Lower School Atrium · Dining Room Toilets (Pupils)",
- estates:["C7: 25 chairs"]},
-
-{day:"sun",time:"14:00–16:00",title:"Children's Party — Venue Hire",mgr:"Alexandra Hart",ref:2617,num:30,status:"Hire Agreement Sent",type:"Commercial Event",room:"Multi Use Games Area · 6th Form Common Room",
- other:["<span class='req-label'>Cleaning:</span> 6th Form Common Room to be cleaned by 1.30pm, all bins emptied","<span class='req-label'>Schedule:</span> 2–3.30pm MUGA for rugby session · 2–4pm 6th Form Common Room for food/drink","All rubbish/food to be bagged and cleared to the bin shed at the end of the party"]},
+/* ============================================================
+   RENDER
+   ============================================================ */
+const TABS = [
+  {key:"overview", label:"Overview"},
+  {key:"catering", label:"Catering"},
+  {key:"estates",  label:"Estates & Porters"},
+  {key:"av",       label:"AV & Tech"},
+  {key:"other",    label:"Other Notes"}
 ];
 
-/* ===== Render ===== */
-function countFor(dayKey){return EVENTS.filter(e=>e.day===dayKey).length;}
+const dayNav   = document.getElementById('dayNav');
+const cardList = document.getElementById('cardList');
+const dayTitle = document.getElementById('dayTitle');
+const dayCount = document.getElementById('dayCount');
+let activeDay = 0;
 
-function buildNav(){
-  const nav=document.getElementById('daynav');
-  DAYS.forEach((d,i)=>{
-    const c=countFor(d.key);
-    const b=document.createElement('button');
-    b.className='daytab'+(i===0?' active':'');
-    b.dataset.day=d.key;
-    b.innerHTML=`<div class="dname">${d.name}</div><div class="dnum">${d.num}</div><div class="dcount">${c} event${c===1?'':'s'}</div>`;
-    b.addEventListener('click',()=>showDay(d.key));
-    nav.appendChild(b);
-  });
+function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+
+function badgesFor(ev){
+  const b=[];
+  if(ev.catering && ev.catering.length) b.push('<span class="badge b-cat">Catering</span>');
+  if(ev.estates  && ev.estates.length)  b.push('<span class="badge b-est">Estates</span>');
+  if(ev.av       && ev.av.length)        b.push('<span class="badge b-av">AV</span>');
+  if(ev.other    && ev.other.length)     b.push('<span class="badge b-note">Notes</span>');
+  return b.join('');
 }
 
-function tabBtn(label,cls,has,key){
-  const dis=has?'':' disabled';
-  return `<button class="tab${dis}" data-tab="${key}" ${has?'':'disabled aria-disabled="true"'}>${label}</button>`;
-}
-function reqList(items){
-  if(!items||!items.length) return `<p class="req-empty">No requirements noted.</p>`;
-  let html='<ul class="reqs">';
-  items.forEach(it=>{
-    if(typeof it==='object'&&it.sub){html+=`<li class="sub">${it.t}</li>`;}
-    else{html+=`<li>${it}</li>`;}
-  });
-  return html+'</ul>';
+function reqList(items, cls){
+  if(!items || !items.length) return '<p class="empty">No requirements noted.</p>';
+  return '<ul class="req'+(cls?' '+cls:'')+'">'+items.map(i=>'<li>'+i+'</li>').join('')+'</ul>';
 }
 
-function cardHTML(e,idx){
-  const hasCat=!!(e.catering&&e.catering.length);
-  const hasEst=!!(e.estates&&e.estates.length);
-  const hasAV=!!(e.av&&e.av.length);
-  const hasOth=!!(e.other&&e.other.length);
-  const prov = e.status!=='Confirmed';
-  const badges=[
-    `<span class="badge b-status${prov?' prov':''}">${e.status}</span>`,
-    hasCat?'<span class="badge b-cat">Catering</span>':'',
-    hasEst?'<span class="badge b-est">Estates</span>':'',
-    hasAV?'<span class="badge b-av">AV</span>':'',
-    hasOth?'<span class="badge b-note">Notes</span>':'',
-  ].join('');
-  const [t1,t2]=e.time.split('–');
-
-  const ov=`<div class="kv">
-    <div class="kv-item"><span class="kv-k">Room</span><span class="kv-v full">${e.room||'—'}</span></div>
-    <div class="kv-item"><span class="kv-k">Numbers</span><span class="kv-v">${e.num}</span></div>
-    <div class="kv-item"><span class="kv-k">Ref</span><span class="kv-v">#${e.ref}</span></div>
-    <div class="kv-item"><span class="kv-k">Manager</span><span class="kv-v">${e.mgr}</span></div>
-    <div class="kv-item"><span class="kv-k">Status</span><span class="kv-v">${e.status}</span></div>
-    <div class="kv-item"><span class="kv-k">Type</span><span class="kv-v">${e.type}</span></div>
-    <div class="kv-item"><span class="kv-k">Time</span><span class="kv-v">${e.time}</span></div>
-  </div>${e.notes?`<div class="ov-notes"><div class="kv-k">Notes</div><p>${e.notes}</p></div>`:''}`;
-
-  return `<div class="card" data-idx="${idx}">
-    <button class="card-head" aria-expanded="false">
-      <div class="timepill"><div class="t1">${t1}</div><div class="t2">${t2}</div></div>
-      <div class="card-main">
-        <div class="card-title">${e.title}</div>
-        <div class="card-sub"><span class="mgr">${e.mgr}</span><span class="rm">${e.room||''}</span></div>
-        <div class="badges">${badges}</div>
-      </div>
-      <div class="chev" aria-hidden="true">▾</div>
-    </button>
-    <div class="card-body">
-      <div class="tabbar" role="tablist">
-        ${tabBtn('Overview','',true,'ov')}
-        ${tabBtn('Catering','tab-cat',hasCat,'cat')}
-        ${tabBtn('Estates & Porters','tab-est',hasEst,'est')}
-        ${tabBtn('AV & Tech','tab-av',hasAV,'av')}
-        ${tabBtn('Other Notes','tab-other',hasOth,'oth')}
-      </div>
-      <div class="tabpanel active" data-panel="ov">${ov}</div>
-      <div class="tabpanel tab-cat" data-panel="cat">${reqList(e.catering)}</div>
-      <div class="tabpanel tab-est" data-panel="est">${reqList(e.estates)}</div>
-      <div class="tabpanel tab-av" data-panel="av">${reqList(e.av)}</div>
-      <div class="tabpanel tab-other" data-panel="oth">${reqList(e.other)}</div>
-    </div>
-  </div>`;
+function overviewPanel(ev){
+  const statusCls = /confirmed/i.test(ev.status) ? ' conf' : '';
+  let kv = '<dl class="kv">'+
+    '<dt>Room</dt><dd>'+esc(ev.rooms)+'</dd>'+
+    '<dt>Numbers</dt><dd>'+esc(ev.numbers)+'</dd>'+
+    '<dt>Ref</dt><dd>'+esc(ev.ref)+'</dd>'+
+    '<dt>Manager</dt><dd>'+esc(ev.manager)+'</dd>'+
+    '<dt>Type</dt><dd>'+esc(ev.type)+'</dd>'+
+    '<dt>Status</dt><dd><span class="pill'+statusCls+'">'+esc(ev.status)+'</span></dd>'+
+    '</dl>';
+  if(ev.ovNotes && ev.ovNotes.trim()){
+    kv += '<div class="ov-notes"><div class="lbl">Key notes</div><p>'+ev.ovNotes+'</p></div>';
+  }
+  return kv;
 }
 
-function showDay(key){
-  document.querySelectorAll('.daytab').forEach(t=>t.classList.toggle('active',t.dataset.day===key));
-  const day=DAYS.find(d=>d.key===key);
-  const evs=EVENTS.filter(e=>e.day===key);
-  const main=document.getElementById('main');
-  let html=`<div class="day-head"><h2>${day.label}</h2><span class="dh-count">${evs.length} event${evs.length===1?'':'s'}</span><span class="dh-line"></span></div>`;
-  if(!evs.length){html+=`<div class="empty-day">No events scheduled for this day.</div>`;}
-  else{html+='<div class="cards">'+evs.map((e,i)=>cardHTML(e,i)).join('')+'</div>';}
-  main.innerHTML=html;
-  wireCards();
-  window.scrollTo({top:0,behavior:'instant'in window?'instant':'auto'});
+function renderCardBody(ev, idx){
+  const content = {
+    overview: overviewPanel(ev),
+    catering: reqList(ev.catering,'p-cat'),
+    estates:  reqList(ev.estates),
+    av:       reqList(ev.av,'p-av'),
+    other:    reqList(ev.other,'p-note')
+  };
+  const has = {
+    overview:true,
+    catering:!!(ev.catering&&ev.catering.length),
+    estates:!!(ev.estates&&ev.estates.length),
+    av:!!(ev.av&&ev.av.length),
+    other:!!(ev.other&&ev.other.length)
+  };
+  const firstActive = 'overview';
+
+  const strip = TABS.map(t=>{
+    const dis = has[t.key] ? '' : ' disabled';
+    const act = t.key===firstActive ? ' active' : '';
+    return '<button class="tabbtn'+act+dis+'" data-tab="'+t.key+'" data-card="'+idx+'"'+
+           (has[t.key]?'':' aria-disabled="true" tabindex="-1"')+'>'+t.label+'</button>';
+  }).join('');
+
+  const panels = TABS.map(t=>{
+    const act = t.key===firstActive ? ' active' : '';
+    const pcls = t.key==='catering'?' p-cat':t.key==='av'?' p-av':t.key==='other'?' p-note':'';
+    return '<div class="panel'+pcls+act+'" data-panel="'+t.key+'" data-card="'+idx+'">'+content[t.key]+'</div>';
+  }).join('');
+
+  return '<div class="card-body"><div class="tabstrip">'+strip+'</div>'+panels+'</div>';
 }
 
-function wireCards(){
-  document.querySelectorAll('.card').forEach(card=>{
-    const head=card.querySelector('.card-head');
-    head.addEventListener('click',()=>{
-      const open=card.classList.toggle('open');
-      head.setAttribute('aria-expanded',open?'true':'false');
+function renderDay(d){
+  const day = WEEK[d];
+  dayTitle.textContent = day.fullDate;
+  const n = day.events.length;
+  dayCount.textContent = n+' event'+(n===1?'':'s');
+
+  cardList.innerHTML = day.events.map((ev,i)=>{
+    return '<article class="card" data-card="'+i+'">'+
+      '<button class="card-head" data-toggle="'+i+'" aria-expanded="false">'+
+        '<span class="timepill">'+esc(ev.from)+'<small>'+esc(ev.to)+'</small></span>'+
+        '<span class="ch-main">'+
+          '<span class="ch-title">'+esc(ev.title)+'</span>'+
+          '<span class="ch-sub"><span class="mgr">'+esc(ev.manager)+'</span><span class="ch-type">'+esc(ev.type)+'</span><span>Ref '+esc(ev.ref)+'</span></span>'+
+          '<span class="badges">'+badgesFor(ev)+'</span>'+
+        '</span>'+
+        '<span class="chev" aria-hidden="true">▾</span>'+
+      '</button>'+
+      renderCardBody(ev,i)+
+    '</article>';
+  }).join('');
+
+  // re-bind
+  cardList.querySelectorAll('[data-toggle]').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      const card = btn.closest('.card');
+      const open = card.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open?'true':'false');
     });
-    card.querySelectorAll('.tab:not(.disabled)').forEach(tab=>{
-      tab.addEventListener('click',ev=>{
-        ev.stopPropagation();
-        const panel=tab.dataset.tab;
-        card.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
-        card.querySelectorAll('.tabpanel').forEach(p=>p.classList.remove('active'));
-        tab.classList.add('active');
-        card.querySelector(`.tabpanel[data-panel="${panel}"]`).classList.add('active');
-      });
+  });
+  cardList.querySelectorAll('.tabbtn:not(.disabled)').forEach(tb=>{
+    tb.addEventListener('click',(e)=>{
+      e.stopPropagation();
+      const card = tb.closest('.card');
+      const key = tb.dataset.tab;
+      card.querySelectorAll('.tabbtn').forEach(x=>x.classList.remove('active'));
+      card.querySelectorAll('.panel').forEach(x=>x.classList.remove('active'));
+      tb.classList.add('active');
+      card.querySelector('.panel[data-panel="'+key+'"]').classList.add('active');
     });
   });
 }
 
-buildNav();
-showDay('mon');
+function renderNav(){
+  dayNav.innerHTML = WEEK.map((d,i)=>{
+    return '<button class="daytab'+(i===activeDay?' active':'')+'" data-day="'+i+'">'+
+      '<span class="dn">'+d.day.slice(0,3)+'</span>'+
+      '<span class="dd">'+d.dateNum+'</span>'+
+      '<span class="dc">'+d.events.length+'</span>'+
+    '</button>';
+  }).join('');
+  dayNav.querySelectorAll('[data-day]').forEach(b=>{
+    b.addEventListener('click',()=>{
+      activeDay = +b.dataset.day;
+      dayNav.querySelectorAll('.daytab').forEach(x=>x.classList.remove('active'));
+      b.classList.add('active');
+      renderDay(activeDay);
+      window.scrollTo({top:0,behavior:'smooth'});
+    });
+  });
+}
+
+// Default to the current weekday if it falls within the week, else Monday.
+(function initDay(){
+  const today = new Date();
+  const map = {1:0,2:1,3:2,4:3,5:4,6:5,0:6}; // JS getDay -> Mon..Sun index
+  const wd = map[today.getDay()];
+  // Only auto-select if today is actually within this planner's week.
+  const target = new Date(2026,5,29); // Mon 29 Jun 2026
+  const diff = Math.floor((today - target)/(1000*60*60*24));
+  if(diff>=0 && diff<=6){ activeDay = diff; }
+})();
+
+renderNav();
+renderDay(activeDay);
 </script>
 </body>
 </html>
