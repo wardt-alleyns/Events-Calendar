@@ -677,7 +677,7 @@ body {
   </div>
   <div class="header-divider"></div>
   <div class="header-week">
-    <div class="header-week-label" id="headerWeekLabel">Michaelmas Term 2026 &mdash; Week 1</div>
+    <div class="header-week-label" id="headerWeekLabel">Advent Term 2026 &mdash; Week 1</div>
     <div class="header-week-range" id="headerWeekRange">Monday 7 &ndash; Sunday 13 September 2026</div>
   </div>
   <div class="header-internal">Internal use only</div>
@@ -762,7 +762,7 @@ function selectWeek(idx){
 }
 
 function renderHeader(){
-  document.getElementById('headerWeekLabel').innerHTML = `Michaelmas Term 2026 &mdash; ${WEEKS[currentWeek].label}`;
+  document.getElementById('headerWeekLabel').innerHTML = `Advent Term 2026 &mdash; ${WEEKS[currentWeek].label}`;
   document.getElementById('headerWeekRange').innerHTML = WEEKS[currentWeek].range + (WEEKS[currentWeek].watermark ? ' &nbsp;&middot;&nbsp; Welcome back!' : '');
 }
 
